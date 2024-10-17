@@ -1,2 +1,1 @@
-# kitikiplot
-Slide the window
+![plot](./assets/banner.png)
