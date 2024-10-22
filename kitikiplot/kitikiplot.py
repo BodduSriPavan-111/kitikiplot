@@ -10,7 +10,9 @@ class kitikiplot:
         self.rows= self.data.shape[0]
         self.cols= self.data.shape[1]
 
-    def plot( self, figsize= (25, 5),
+    def plot( self, 
+              window_range= "all",
+              figsize= (25, 5),
               cell_width= 0.5,
               cell_height= 2,
               window_gap= 1,
@@ -28,7 +30,12 @@ class kitikiplot:
 
         data= self.data.values
 
-        for index in range(self.rows):
+        if window_range== "all":
+            window_range= range(self.rows)
+        else:
+            window_range= range( window_range[0], window_range[1])
+
+        for index in window_range:
 
             each_sample= data[ index ]
 
@@ -55,7 +62,7 @@ class kitikiplot:
         plt.xticks( [(i+1)*window_gap+(i+1)*cell_width+cell_width/2 for i in range(self.rows)],
                     ['Window_'+str(i+1) for i in range(self.rows)], rotation= xticks_rotation)
         
-        plt.yticks( [i*2+1.5 for i in range(self.cols)],
+        plt.yticks( [(i+1)*cell_height+cell_height/2 for i in range(self.cols)],
                     ["Frame_"+str(i) for i in range(self.cols)], rotation= yticks_rotation)
         # automatically scale the plot
         ax.relim()

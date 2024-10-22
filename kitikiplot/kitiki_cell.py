@@ -15,7 +15,7 @@ class KitikiCell:
 
         color_map= self.color_config.config( cmap= cmap, edge_color= edge_color )
 
-        return Rectangle((window_gap*(x+1)+ cell_width*(x+1) , y*2+1),
+        return Rectangle( (window_gap*(x+1)+ cell_width*(x+1) , cell_height*(y+1)),
            width= cell_width, 
            height= cell_height,
            facecolor= color_map[0][ each_sample[y] ],
