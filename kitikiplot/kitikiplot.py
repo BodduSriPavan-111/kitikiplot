@@ -1,12 +1,11 @@
 from .kitiki_cell import KitikiCell
 import matplotlib.pyplot as plt
 
-class kitikiplot:
+class kitikiplot(KitikiCell):
 
     def __init__(self, data):
 
-        self.data= data
-        self.cell= KitikiCell( data= self.data )
+        super().__init__(data=data)
         self.rows= self.data.shape[0]
         self.cols= self.data.shape[1]
 
@@ -19,6 +18,8 @@ class kitikiplot:
               cmap= "rainbow", 
               edge_color= "#000000", 
               title= "KitikiPlot: Intuitive Visualization for Sliding Window", 
+              xtick_prefix= "Window",
+              ytick_prefix= "Frame",
               xlabel= "Sliding Windows", 
               ylabel= "Frames", 
               xticks_rotation= 0, 
@@ -41,7 +42,7 @@ class kitikiplot:
 
             for time_frame in range(self.cols):
 
-                cell_gen= self.cell.create(x= index,
+                cell_gen= self.create(x= index,
                                            y= time_frame,
                                            each_sample= each_sample,
                                            cell_width= cell_width,
@@ -60,10 +61,11 @@ class kitikiplot:
         plt.ylabel(ylabel)
 
         plt.xticks( [(i+1)*window_gap+(i+1)*cell_width+cell_width/2 for i in range(self.rows)],
-                    ['Window_'+str(i+1) for i in range(self.rows)], rotation= xticks_rotation)
+                    [xtick_prefix+'_'+str(i+1) for i in range(self.rows)], rotation= xticks_rotation)
         
         plt.yticks( [(i+1)*cell_height+cell_height/2 for i in range(self.cols)],
-                    ["Frame_"+str(i) for i in range(self.cols)], rotation= yticks_rotation)
+                    [ytick_prefix+"_"+str(i) for i in range(self.cols)], rotation= yticks_rotation)
+        
         # automatically scale the plot
         ax.relim()
         ax.autoscale_view() 

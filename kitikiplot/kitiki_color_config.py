@@ -9,17 +9,22 @@ class ColorConfig:
         self.data= data
 
 
-
     def config(self, cmap= "rainbow", edge_color= "#000000"):
 
-        unique_values= pd.unique( self.data.values.ravel())
+        if type(cmap)== str:
+            
+            unique_values= pd.unique( self.data.values.ravel())
 
-        n_unique= unique_values.shape[0]
+            n_unique= unique_values.shape[0]
 
-        cmap = plt.get_cmap( cmap, n_unique)
+            cmap = plt.get_cmap( cmap, n_unique)
 
-        custom_palette = [matplotlib.colors.rgb2hex(cmap(i)) for i in range(cmap.N)]
+            custom_palette = [matplotlib.colors.rgb2hex(cmap(i)) for i in range(cmap.N)]
 
-        color_map= dict(zip(unique_values, custom_palette))
+            color_map= dict(zip(unique_values, custom_palette))
+
+        elif type(cmap)==dict:
+            
+            color_map= cmap
 
         return color_map, edge_color
