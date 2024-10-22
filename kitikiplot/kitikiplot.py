@@ -15,8 +15,11 @@ class kitikiplot(KitikiCell):
               cell_width= 0.5,
               cell_height= 2,
               window_gap= 1,
-              cmap= "rainbow", 
+              cmap= "rainbow",
+              fallback_color= "#FAFAFA", 
               edge_color= "#000000", 
+              hmap= "",
+              fallback_hatch= "",
               title= "KitikiPlot: Intuitive Visualization for Sliding Window", 
               xtick_prefix= "Window",
               ytick_prefix= "Frame",
@@ -49,7 +52,10 @@ class kitikiplot(KitikiCell):
                                            cell_height= cell_height,
                                            window_gap= window_gap,
                                            edge_color= edge_color,
-                                           cmap= cmap
+                                           cmap= cmap,
+                                           fallback_color= fallback_color
+                                        #    hmap= hmap,
+                                        #    fallback_hatch= fallback_hatch
                                            )
                 patches.append( cell_gen )
 
