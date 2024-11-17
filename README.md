@@ -21,7 +21,7 @@
 
 > @software{ <br/>
 > package = {@learn-hunger/visual-gestures}, <br/>
-> authors = {Boddu Sri Pavan, Boddu Swathi Sree}, <br/>
+> authors = {Boddu Sri Pavan& Boddu Swathi Sree}, <br/>
 > title = {{KitikiPlot}}, <br/>
 > year = {2024}, <br/>
 > version = {0.0.1}, <br/>
