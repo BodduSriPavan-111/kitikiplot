@@ -5,6 +5,36 @@ import random
 import math
 
 class ColorConfig:
+    """
+    Set data, color, and hatch configuration for kitikiplot
+
+    Parameters
+    ----------
+    data: pd.DataFrame, list
+        - Data to generate kitikiplot. 
+        - This can be considered to be as "Categorical Time-Series Data" 
+    stride: int
+        - No.of steps the sliding window jumps across bwtween consecutive timestamps
+        - Default is '1' indicating sliding window moves one position forward between any consewcutive timestamps
+    window_length: int
+        - Length/ Size of sliding window
+        - Default is '10'
+
+    Attributes
+    ----------
+    data: pd.DataFrame
+        - The dataset with which kitikiplot is initialized
+
+    
+    Methods
+    -------
+        Instance Methods:
+            color_config
+            hatch_config
+        Static Methods:
+            _convert_list_to_dataframe
+            _unique_config
+    """
 
     def __init__(self, data, stride= 1, window_length= 10):
 
@@ -35,6 +65,7 @@ class ColorConfig:
 
         return pd.DataFrame( l )
 
+    @staticmethod
     def _unique_config(self):
 
         unique_values= pd.unique( self.data.values.ravel())

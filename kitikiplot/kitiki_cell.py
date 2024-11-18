@@ -2,8 +2,46 @@ from .kitiki_color_config import ColorConfig
 from matplotlib.patches import Rectangle
 
 class KitikiCell(ColorConfig):
+    """
+        Plot each KitikiCell (Rectangular patch in KitikiPlot)
 
-    def __init__(self, data, stride= 1, window_length= 10, line_width= 1):
+        Parameters
+        ----------
+        data: pd.DataFrame, list
+            - Data to generate kitikiplot. 
+            - This can be considered to be as "Categorical Time-Series Data"
+        stride: int
+            - No.of steps the sliding window jumps across bwtween consecutive timestamps
+            - Default is '1' indicating sliding window moves one position forward between any consewcutive timestamps
+        window_length:  int
+            - Length/ Size of sliding window
+            - Default is '10'
+        line_width: float
+            - Width of kitikicell outline
+            - Default is '1.0'
+
+        Attributes
+        ----------
+        line_width: float
+            - Width of kitikicell outline
+            - Default is '1.0'
+
+        Methods
+        -------
+        create
+
+        """
+    Set data, color, and hatch configuration for kitikiplot
+
+    Parameters
+    ----------
+    data:  
+    stride: 
+    window_length:
+
+    """
+    """
+    def __init__(self, data, stride= 1, window_length= 10, line_width= 1.0):
 
         super().__init__(data=data, stride= stride, window_length= window_length)
         self.line_width= line_width
