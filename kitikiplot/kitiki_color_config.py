@@ -81,9 +81,19 @@ class ColorConfig:
         return pd.DataFrame( l )
 
     def unique_config(self):
+        """
+            Find unique values and no.of unique values from input dataframe
 
+            Returns:
+                tuple: (a, b)
+                    where a: numpy.ndarray of unique values present in input dataframe
+                          b: int denoting no.of unique values present in input dataframe
+        """
+
+        # Extract unique values from input dataframe
         unique_values= pd.unique( self.data.values.ravel())
 
+        # Find no.of unique values in input dataframe
         n_unique= unique_values.shape[0]
 
         return unique_values, n_unique
