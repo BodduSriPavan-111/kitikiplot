@@ -1,3 +1,11 @@
+"""
+File Name: kitiki_color_config.py
+Description: This file defines the 'ColorConfig' class for managing input data(list, dataframe) and configuring color, hatch of kitiki plot
+Author: Boddu Sri Pavan
+Date Created: 20-10-2024
+Last Modified: 20-11-2024
+"""
+
 import pandas as pd
 import matplotlib
 import matplotlib.pyplot as plt
@@ -6,7 +14,7 @@ import math
 
 class ColorConfig:
     """
-    Set data, color, and hatch configuration for kitikiplot
+    Set data, color, and hatch configurations required for kitikiplot
 
     Parameters
     ----------
@@ -24,6 +32,10 @@ class ColorConfig:
     ----------
     data: pd.DataFrame
         - The dataset with which kitikiplot is initialized
+    row: int
+        - No.of rows in dataframe (defaultly considered as each sliding window)
+    cols: int
+        - No.of columns in dataframe (defaulty considered as value at each instance in corresponding sliding window)
 
     
     Methods
@@ -31,9 +43,9 @@ class ColorConfig:
         Instance Methods:
             color_config
             hatch_config
+            unique_config
         Static Methods:
             _convert_list_to_dataframe
-            _unique_config
     """
 
     def __init__(self, data, stride= 1, window_length= 10):
@@ -43,6 +55,9 @@ class ColorConfig:
 
         elif isinstance( data, list):
             self.data= self._convert_list_to_dataframe( data, stride, window_length)
+
+        self.rows= self.data.shape[0]
+        self.cols= self.data.shape[1]
 
     @staticmethod
     def _convert_list_to_dataframe( data, stride= 1, window_length= 10):
@@ -65,8 +80,7 @@ class ColorConfig:
 
         return pd.DataFrame( l )
 
-    @staticmethod
-    def _unique_config(self):
+    def unique_config(self):
 
         unique_values= pd.unique( self.data.values.ravel())
 
@@ -76,7 +90,7 @@ class ColorConfig:
 
     def color_config(self, cmap, edge_color, fallback_color):
 
-        unique_values, n_unique= self._unique_config()
+        unique_values, n_unique= self.unique_config()
 
         if type(cmap)== str:
             
@@ -101,7 +115,7 @@ class ColorConfig:
 
         HATCH_PATTERN= ['o', '/', '*', '\\','..', '+o', 'x*', 'o-', '|', '-', '+', 'x', 'O', '.',  '//', '\\\\', '||', '--', '++', 'xx', 'oo', 'OO',  '**', '/o', '\\|', '|*', '-\\', 'O|', 'O.', '*-']
 
-        unique_values, n_unique= self._unique_config()
+        unique_values, n_unique= self.unique_config()
 
         if display_hatch== False:
 

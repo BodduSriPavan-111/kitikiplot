@@ -1,9 +1,18 @@
+"""
+File Name: kitiki_cell.py
+Description: This file defines the 'KitikiCell' class for each rectangular cell in kitiki plot
+Author: Boddu Sri Pavan
+Date Created: 20-10-2024
+Last Modified: 20-11-2024
+"""
+
 from .kitiki_color_config import ColorConfig
 from matplotlib.patches import Rectangle
 
 class KitikiCell(ColorConfig):
     """
-        Plot each KitikiCell (Rectangular patch in KitikiPlot)
+        Plot each KitikiCell (Rectangular patch) in KitikiPlot
+        Inherits 'ColorConfig' class
 
         Parameters
         ----------
@@ -16,35 +25,26 @@ class KitikiCell(ColorConfig):
         window_length:  int
             - Length/ Size of sliding window
             - Default is '10'
-        line_width: float
-            - Width of kitikicell outline
-            - Default is '1.0'
 
         Attributes
         ----------
-        line_width: float
-            - Width of kitikicell outline
-            - Default is '1.0'
+        data: pd.DataFrame
+            - The dataset with which kitikiplot is initialized
+        row: int
+            - No.of rows in dataframe (defaultly considered as each sliding window)
+        cols: int
+            - No.of columns in dataframe (defaulty considered as value at each instance in corresponding sliding window)
+
 
         Methods
         -------
         create
 
         """
-    Set data, color, and hatch configuration for kitikiplot
-
-    Parameters
-    ----------
-    data:  
-    stride: 
-    window_length:
-
-    """
-    """
-    def __init__(self, data, stride= 1, window_length= 10, line_width= 1.0):
+    
+    def __init__(self, data, stride= 1, window_length= 10):
 
         super().__init__(data=data, stride= stride, window_length= window_length)
-        self.line_width= line_width
 
 
     def create( self,
@@ -72,7 +72,6 @@ class KitikiCell(ColorConfig):
         return Rectangle( rect_dim,
            width= cell_width, 
            height= cell_height,
-           linewidth= self.line_width,
            facecolor= cmap[0][ each_sample[y] ],
            edgecolor= cmap[1],
            hatch= hmap[each_sample[y]],

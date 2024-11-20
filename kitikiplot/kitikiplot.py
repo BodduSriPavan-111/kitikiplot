@@ -1,14 +1,52 @@
+"""
+File Name: Kiti.py
+Description: This file defines the 'KitikiPlot' class for generating kitki plot for categorical sequential& time-series data
+Author: Boddu Sri Pavan
+Date Created: 20-10-2024
+Last Modified: 20-11-2024
+"""
+
 from .kitiki_cell import KitikiCell
 import matplotlib.pyplot as plt
 import matplotlib.patches as mpatches
 
-class kitikiplot(KitikiCell):
+class KitikiPlot(KitikiCell):
+    """
+        Generate Kitiki Plot - Slide the window !
+        Inherits "KitikiCell" class
+
+        Parameters
+        ----------
+        data: pd.DataFrame, list
+            - Data to generate kitikiplot. 
+            - This can be considered to be as "Categorical Time-Series Data"
+        stride: int
+            - No.of steps the sliding window jumps across bwtween consecutive timestamps
+            - Default is '1' indicating sliding window moves one position forward between any consewcutive timestamps
+        window_length:  int
+            - Length/ Size of sliding window
+            - Default is '10'
+        
+        Attributes
+        ----------
+        data: pd.DataFrame
+            - The dataset with which kitikiplot is initialized
+        row: int
+            - No.of rows in dataframe (defaultly considered as each sliding window)
+        cols: int
+            - No.of columns in dataframe (defaulty considered as value at each instance in corresponding sliding window)
+
+        Methods
+        -------
+        plot
+        legend
+
+    
+    """
 
     def __init__(self, data, stride= 1, window_length= 10):
 
         super().__init__(data=data, stride= stride, window_length= window_length)
-        self.rows= self.data.shape[0]
-        self.cols= self.data.shape[1]
 
     def plot( self, 
               window_range= "all",

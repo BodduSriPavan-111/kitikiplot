@@ -1,1 +1,1 @@
-from .kitikiplot import kitikiplot
+from .kitikiplot import KitikiPlot
