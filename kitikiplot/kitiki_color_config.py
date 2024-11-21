@@ -14,7 +14,7 @@ import math
 
 class ColorConfig:
     """
-    Configure data, color, and hatch settings for Kitikiplot.
+    Configure data, color, and hatch settings for Kitikiplot visualization.
 
     Parameters
     ----------
