@@ -15,65 +15,63 @@ class KitikiPlot(KitikiCell):
     A class to create a Kitikiplot visualization based on sliding window data.
 
     This class extends the KitikiCell class to provide functionality for plotting 
-    data in a grid format, where each cell can be customized with colors, hatches, 
+    KitikiPlot, where each cell can be customized with colors, hatches, 
     and other visual properties.
 
     Parameters
     ----------
     data : pd.DataFrame or list
-        The input data which can be either a pandas DataFrame or a list. If a list is provided, 
-        it will be converted into a DataFrame using specified stride and window length.
-    stride : int, optional
-        The number of elements to move the window after each iteration when converting a list 
-        to a DataFrame. Default is 1.
-    window_length : int, optional
-        The length of each window when converting a list to a DataFrame. Default is 10.
+        - The input data to be processed.
+    stride : int (optional)
+        - The number of elements to move the window after each iteration when converting a list to a DataFrame. 
+        - Default is 1.
+    window_length : int (optional)
+        - The length of each window when converting a list to a DataFrame. 
+        - Default is 10.
     """
      
     def __init__(self, data, stride= 1, window_length= 10):
         """
         Initialize the KitikiPlot object by inheriting from KitikiCell.
 
-        This constructor initializes the parent KitikiCell class with the provided data 
-        and configuration parameters.
-
         Parameters
         ----------
         data : pd.DataFrame or list
-            The input data to be processed.
-        stride : int, optional
-            The number of elements to move the window after each iteration when converting 
-            a list to a DataFrame. Default is 1.
-        window_length : int, optional
-            The length of each window when converting a list to a DataFrame. Default is 10.
+            - The input data to be processed.
+        stride : int (optional)
+            - The number of elements to move the window after each iteration when converting a list to a DataFrame. 
+            - Default is 1.
+        window_length : int (optional)
+            - The length of each window when converting a list to a DataFrame. 
+            - Default is 10.
         """
         super().__init__(data=data, stride= stride, window_length= window_length)
 
     def plot( self, 
-              window_range= "all",
               figsize= (25, 5),
               cell_width= 0.5,
-              cell_height= 2,
-              window_gap= 1,
+              cell_height= 2.0,
+              window_gap= 1.0,
+              window_range= "all",           
               cmap= "rainbow",
-              fallback_color= "#FAFAFA", 
               edge_color= "#000000", 
+              fallback_color= "#FAFAFA", 
               hmap= {},
               fallback_hatch= " ",
               display_hatch= False,
-              legend_hatch= False,
-              title= "KitikiPlot: Intuitive Visualization for Sliding Window", 
-              xtick_prefix= "Window",
-              ytick_prefix= "Frame",
+              transpose= False,
               xlabel= "Sliding Windows", 
               ylabel= "Frames", 
+              xtick_prefix= "Window",
+              ytick_prefix= "Frame",
               xticks_rotation= 0, 
               yticks_rotation= 0,
+              title= "KitikiPlot: Intuitive Visualization for Sliding Window", 
               display_legend= False,
-              kitiki_cell_kwargs= {},
+              legend_hatch= False,
               legend_kwargs= {},
-              transpose= False ):
-
+              kitiki_cell_kwargs= {}
+            ):
         """
         Create and display the Kitikiplot visualization.
 
@@ -82,54 +80,78 @@ class KitikiPlot(KitikiCell):
 
         Parameters
         ----------
-        figsize : tuple, optional
-            The size of the figure (width, height). Default is (25, 5).
-        window_range : str or tuple, optional
-            The range of windows to display. Use "all" to show all windows or specify a tuple 
-            (start_index, end_index). Default is "all".
-        cell_width : float, optional
-            The width of each cell in the grid. Default is 0.5.
-        cell_height : float, optional
-            The height of each cell in the grid. Default is 2.
-        window_gap : float, optional
-            The gap between cells in the grid. Default is 1.
-        cmap : str or list, optional
-            A colormap name or list of colors for filling cells. Default is "rainbow".
-        edge_color : str, optional
-            The color to use for the edges of the rectangles. Default is "#000000".
-        fallback_color : str, optional
-            The color to use as fallback if no specific color is assigned. Default is "#FAFAFA".
-        hmap : dict, optional
-            A dictionary mapping unique values to their corresponding hatch patterns. Default is {}.
-        fallback_hatch : str, optional
-            The hatch pattern to use as fallback if no specific hatch is assigned. Default is " ".
-        display_hatch : bool, optional
-            A flag indicating whether to display hatch patterns on cells. Default is False.
-        legend_hatch : bool, optional
-            A flag indicating whether to include hatch patterns in the legend. Default is False.
-        title : str, optional
-            The title of the plot. Default is "KitikiPlot: Intuitive Visualization for Sliding Window".
-        xlabel : str, optional
-            Label for the x-axis. Default is "Sliding Windows".
-        ylabel : str, optional
-            Label for the y-axis. Default is "Frames".
-        xtick_prefix : str, optional
-            Prefix for x-axis tick labels. Default is "Window".
-        ytick_prefix : str, optional
-            Prefix for y-axis tick labels. Default is "Frame".
-        xticks_rotation : int, optional
-            Rotation angle for x-axis tick labels. Default is 0.
-        yticks_rotation : int, optional
-            Rotation angle for y-axis tick labels. Default is 0.
-        display_legend : bool, optional
-            A flag indicating whether to display a legend on the plot. Default is False.
-        kitiki_cell_kwargs : dict, optional
-            Additional keyword arguments passed to customize individual cells.
-        legend_kwargs : dict, optional
-            Additional keyword arguments passed to customize the legend.
-        transpose : bool, optional
-            A flag indicating whether to transpose the dimensions of the cells. Default is False.
-
+        figsize : tuple (optional)
+            - The size of the figure (width, height).
+            - Default is (25, 5).
+        cell_width : float
+            - The width of each cell in the grid.
+            - Default is 0.5.
+        cell_height : float
+            - The height of each cell in the grid.
+            - Default is 2.0.
+        window_gap : float
+            - The gap between cells in the grid.
+            - Default is 1.0.
+        window_range : str or tuple (optional)
+            - The range of windows to display.
+            - Use "all" to show all windows or specify a tuple (start_index, end_index). 
+            - Default is "all".
+        cmap : str or dict
+            - If a string, it should be a colormap name to generate colors.
+            - If a dictionary, it should map unique values to specific colors.
+            - Default is 'rainbow'.
+        edge_color : str
+            - The color to use for the edges of the rectangle.
+            - Default is '#000000'.
+        fallback_color : str
+            - The color to use as fallback if no specific color is assigned.
+            - Default is '#FAFAFA'.
+        hmap : dict
+            - A dictionary mapping unique values to their corresponding hatch patterns.
+            - Default is '{}'.
+        fallback_hatch : str
+            - The hatch pattern to use as fallback if no specific hatch is assigned.
+            - Default is '" "' (string with single space).
+        display_hatch : bool
+            - A flag indicating whether to display hatch patterns on cells.
+            - Default is False.
+        transpose : bool (optional)
+            - A flag indicating whether to transpose the KitikiPlot. 
+            - Default is False.
+        xlabel : str (optional)
+            - Label for the x-axis. 
+            - Default is "Sliding Windows".
+        ylabel : str (optional)
+            - Label for the y-axis. 
+            - Default is "Frames".
+        xtick_prefix : str (optional)
+            - Prefix for x-axis tick labels. 
+            - Default is "Window".
+        ytick_prefix : str (optional)
+            - Prefix for y-axis tick labels. 
+            - Default is "Frame".
+        xticks_rotation : int (optional)
+            - Rotation angle for x-axis tick labels. 
+            - Default is 0.
+        yticks_rotation : int (optional)
+            - Rotation angle for y-axis tick labels. 
+            - Default is 0.
+        title : str (optional)
+            - The title of the plot. 
+            - Default is "KitikiPlot: Intuitive Visualization for Sliding Window".
+        display_legend : bool (optional)
+            - A flag indicating whether to display a legend on the plot. 
+            - Default is False.
+        legend_hatch : bool (optional)
+            - A flag indicating whether to include hatch patterns in the legend. 
+            - Default is False.
+        legend_kwargs : dict (optional)
+            - Additional keyword arguments passed to customize the legend.
+            - Default is {}.
+        kitiki_cell_kwargs : dict (optional)
+            - Additional keyword arguments passed to customize individual cells.
+            - Default is {}.
+        
         Returns
         -------
         None: Displays the plot directly.
@@ -139,11 +161,11 @@ class KitikiPlot(KitikiCell):
         self.color_map= self.color_config( cmap= cmap, edge_color= edge_color, fallback_color= fallback_color )
         print("Color COnfig beofre start: ", self.color_map)
         
-        # Determine if hatching should be displayed based on hmap presence
+        # Determine if hatching should be displayed based on 'hmap' presence
         if len(hmap)> 0:
             display_hatch= True
 
-        # If display_hatch is False and hmap not given; default hatch settings are applied
+        # If 'display_hatch' is False and 'hmap' not given; default hatch settings are applied
         if not display_hatch:
             hmap= " "
             fallback_hatch= " "
@@ -157,7 +179,7 @@ class KitikiPlot(KitikiCell):
         # List to hold cell patches
         patches= [] 
 
-        # Prepare data for plotting based on specified window range
+        # Prepare data for plotting
         data= self.data.values
 
         # Check if the specified window range is set to "all"
@@ -165,6 +187,7 @@ class KitikiPlot(KitikiCell):
 
             # If "all" is specified, set window_range to cover all rows in the data
             window_range= range(self.rows)
+
         else:
 
             # If a specific range is provided, create a range object from the start to end index
@@ -200,9 +223,13 @@ class KitikiPlot(KitikiCell):
         for each_patch in patches:
             ax.add_patch( each_patch )
 
-        # Set plot titles and labels
+        # Set plot titles
         plt.title(title)
+
+        # Set label for 'x'-axis
         plt.xlabel(xlabel)
+
+        # Set label for 'y'-axis
         plt.ylabel(ylabel)
 
         # Configure ticks based on transposition setting
@@ -213,7 +240,9 @@ class KitikiPlot(KitikiCell):
             
             plt.yticks( [(i+1)*cell_height+cell_height/2 for i in range(self.cols)],
                         [ytick_prefix+"_"+str(i) for i in range(self.cols)], rotation= yticks_rotation)
+       
         else:
+
             plt.yticks( [(i+1)*window_gap+(i+1)*cell_width+cell_width/2 for i in range(self.rows)],
                         [xtick_prefix+'_'+str(i+1) for i in range(self.rows)], rotation= yticks_rotation)
             
@@ -238,22 +267,22 @@ class KitikiPlot(KitikiCell):
 
     def legend(self, ax, color_map, hatch_map, legend_hatch, **legend_kwargs  ):
         """
-        Create and display a legend for the Kitikiplot visualization.
-
-        This method generates legend entries based on color mappings and hatch patterns.
+        Create and display legend for the KitikiPlot visualization.
 
         Parameters
         ----------
         ax : matplotlib.axes.Axes
-            The axes object where the legend will be placed.
+            - The axes object where the legend will be placed.
         color_map : dict
-            A dictionary mapping unique values to their corresponding colors.
+            - A dictionary mapping unique values to their corresponding colors.
         hatch_map : dict
-            A dictionary mapping unique values to their corresponding hatch patterns.
-        legend_hatch : bool, optional
-            A flag indicating whether to include hatch patterns in the legend. Default is False.
-        legend_kwargs: dict, optional 
-            Additional keyword arguments passed to customize the legend.
+           -  A dictionary mapping unique values to their corresponding hatch patterns.
+        legend_hatch : bool (optional)
+            - A flag indicating whether to include hatch patterns in the legend. 
+            - Default is False.
+        legend_kwargs: dict (optional) 
+            - Additional keyword arguments passed to customize the legend.
+            - Default is {}.
 
         Returns 
         -------
@@ -271,7 +300,7 @@ class KitikiPlot(KitikiCell):
         else:
             # Create legend patches that include hatching
             # Each patch corresponds to a color in the color map and is labeled with its key
-            # The hatch pattern is specified based on the hatch_map, multiplied by 2 for visibility
+            # The hatch pattern is specified based on the 'hatch_map', multiplied by 2 for visibility
             legend_patches= [mpatches.Patch(facecolor= color_map[0][key], label= key, hatch= r"{}".format(hatch_map[key]*2)) for key in color_map[0]]
             
         kwargs= legend_kwargs

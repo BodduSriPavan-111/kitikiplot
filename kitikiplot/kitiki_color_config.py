@@ -14,20 +14,18 @@ import math
 
 class ColorConfig:
     """
-    Configure data, color, and hatch settings for Kitikiplot visualization.
+    Configure data, color, and hatch settings for KitikiPlot visualization.
 
     Parameters
     ----------
     data : pd.DataFrame or list
         - The input data which can be either a pandas DataFrame or a list.
-        - If a list is provided, it will be converted into a DataFrame using specified stride and
-          window length.
+        - If a list is provided, it will be converted into a DataFrame using specified stride and window length.
     stride : int (optional)
-        - The number of elements to move the window after each iteration when converting a list 
-          to a DataFrame. 
+        - The number of elements to move the window after each iteration when converting a list to a DataFrame. 
         - Default is 1.
     window_length : int (optional)
-        - The length of each window when converting a list to a DataFrame
+        - The length of each window when converting a list to a DataFrame.
         - Default is 10.
 
     Attributes
@@ -60,8 +58,7 @@ class ColorConfig:
         data : pd.DataFrame or list
             - The input data to be processed.
         stride : int (optional)
-            - The number of elements to move the window after each iteration when converting 
-              a list to a DataFrame. 
+            - The number of elements to move the window after each iteration when converting a list to a DataFrame. 
             - Default is 1.
         window_length : int (optional)
             - The length of each window when converting a list to a DataFrame. 
@@ -91,13 +88,18 @@ class ColorConfig:
 
         Parameters
         ----------
-        - data (list): The input list of data to be converted.
-        - stride (int): The number of elements to move the window after each iteration. Default is 1.
-        - window_length (int): The length of each window. Default is 10.
+        data : pd.DataFrame or list
+            - The input data to be processed.
+        stride : int (optional)
+            - The number of elements to move the window after each iteration when converting a list to a DataFrame. 
+            - Default is 1.
+        window_length : int (optional)
+            - The length of each window when converting a list to a DataFrame. 
+            - Default is 10.
 
         Returns
         -------
-        - pd.DataFrame: A DataFrame containing the sliding window of data.
+        pd.DataFrame: A DataFrame containing the sliding window of data.
         """
 
         # Calculate the number of rows needed in the DataFrame
@@ -124,12 +126,15 @@ class ColorConfig:
 
     def unique_config(self):
         """
-            Find unique values and no.of unique values from input DataFrame
+        Find unique values and no.of unique values from input DataFrame.
 
-            Returns:
-                tuple: (unique_values, n_unique)
-                    - unique_values (numpy.ndarray): Array of unique values present in the input DataFrame.
-                    - n_unique (int): Number of unique values present in the input DataFrame.
+        Returns
+        -------
+        tuple: (unique_values, n_unique)
+            unique_values : numpy.ndarray
+                - Array of unique values present in the input DataFrame.
+            n_unique : int
+                - Number of unique values present in the input DataFrame.
         """
 
         # Extract unique values from the input DataFrame by flattening it
@@ -145,17 +150,26 @@ class ColorConfig:
         """
         Configure colors for unique values in the DataFrame.
 
-        Parameters:
-            cmap (str or dict): 
-                - If a string, it should be a colormap name to generate colors.
-                - If a dictionary, it should map unique values to specific colors.
-            edge_color (str): Color to be used for edges in visualizations.
-            fallback_color (str): Color to use for any unique values not found in the colormap.
+        Parameters
+        ----------
+        cmap : str or dict
+            - If a string, it should be a colormap name to generate colors.
+            - If a dictionary, it should map unique values to specific colors.
+            - Default is 'rainbow'.
+        edge_color : str
+            - The color to use for the edges of the rectangle.
+            - Default is '#000000'.
+        fallback_color : str
+            - The color to use as fallback if no specific color is assigned.
+            - Default is '#FAFAFA'.
 
-        Returns:
-            tuple: (color_map, edge_color)
-                - color_map (dict): A dictionary mapping unique values to their corresponding colors.
-                - edge_color (str): The specified edge color.
+        Returns
+        -------
+        tuple: (color_map, edge_color)
+            color_map : dict
+                - A dictionary mapping unique values to their corresponding colors.
+            edge_color : str
+                - The specified edge color.
         """
 
         # Find unique values and their count from the input DataFrame
@@ -191,17 +205,20 @@ class ColorConfig:
         """
         Configure hatch patterns for unique values in the DataFrame.
 
-        Parameters:
-            h_map (list or dict): 
-                - If a list, it should contain hatch patterns corresponding to 
-                  unique values.
-                - If a dictionary, it should map unique values to specific hatch patterns.
-            fallback_hatch (str): The hatch pattern to use for any unique values not 
-                                  found in the hatch map.
-            display_hatch (bool): A flag indicating whether to display hatch patterns. 
-                                  If False, all hatches will be set to a space.
+        Parameters
+        ----------
+        hmap : dict
+            - A dictionary mapping unique values to their corresponding hatch patterns.
+            - Default is '{}'.
+        fallback_hatch : str
+            - The hatch pattern to use as fallback if no specific hatch is assigned.
+            - Default is '" "' (string with single space).
+        display_hatch : bool
+            - A flag indicating whether to display hatch patterns on cells.
+            - Default is False.
 
-        Returns:
+        Returns
+        -------
             dict: A dictionary mapping each unique value to its corresponding hatch pattern.
         """
 

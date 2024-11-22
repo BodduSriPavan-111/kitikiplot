@@ -11,11 +11,10 @@ from matplotlib.patches import Rectangle
 
 class KitikiCell(ColorConfig):
     """
-    Represents a cell in the Kitikiplot visualization.
+    Represents a cell in the KitikiPlot visualization.
 
     This class extends the ColorConfig class to add functionality for creating 
-    individual cells in a grid-based visualization. Each cell can be customized 
-    with colors, hatches, and dimensions based on the provided parameters.
+    individual cells in a grid-based visualization.
 
     Parameters
     ----------
@@ -39,8 +38,7 @@ class KitikiCell(ColorConfig):
         data : pd.DataFrame or list
             - The input data to be processed.
         stride : int (optional)
-            - The number of elements to move the window after each iteration when converting 
-              a list to a DataFrame. 
+            - The number of elements to move the window after each iteration when converting a list to a DataFrame. 
             - Default is 1.
         window_length : int (optional)
             - The length of each window when converting a list to a DataFrame. 
@@ -67,60 +65,61 @@ class KitikiCell(ColorConfig):
                 **kitiki_cell_kwargs):
         
         """
-        Create a rectangular cell for the Kitikiplot visualization.
+        Create a rectangular cell for the KitikiPlot visualization.
 
         Parameters
         ----------
         x : int
-            - The x-coordinate (column index) of the cell in the grid.
+            - The x-coordinate of the cell in the grid.
         y : int
-            - The y-coordinate (row index) of the cell in the grid.
+            - The y-coordinate of the cell in the grid.
         each_sample : list
-            - A list containing sample values used for determining color and hatch patterns.
+            - A list containing each data record used for determining color and hatch patterns to plot KitikiPlot.
         cell_width : float
             - The width of each cell in the grid.
-            - Default is 0.5
+            - Default is 0.5.
         cell_height : float
             - The height of each cell in the grid.
-            - Default is 2
-        cmap : list
-            - A list containing color mappings for filling and edge colors.
-            - Default is 'rainbow'
-
-
-        fallback_color : str
-            - The color to use as fallback if no specific color is assigned.
-            - Default is '#FAFAFA'
-        edge_color : str
-            - The color to use for the edges of the rectangle.
-            - Default is '#000000'
+            - Default is 2.0.
         window_gap : float
             - The gap between cells in the grid.
-            - Default is 1
+            - Default is 1.0.
+        cmap : str or dict
+            - If a string, it should be a colormap name to generate colors.
+            - If a dictionary, it should map unique values to specific colors.
+            - Default is 'rainbow'.
+        edge_color : str
+            - The color to use for the edges of the rectangle.
+            - Default is '#000000'.
+        fallback_color : str
+            - The color to use as fallback if no specific color is assigned.
+            - Default is '#FAFAFA'.
         hmap : dict
-            A dictionary mapping unique values to their corresponding hatch patterns.
+            - A dictionary mapping unique values to their corresponding hatch patterns.
+            - Default is '{}'.
         fallback_hatch : str
             - The hatch pattern to use as fallback if no specific hatch is assigned.
-            - Default is '" "' (string with single space)
+            - Default is '" "' (string with single space).
         display_hatch : bool
-            A flag indicating whether to display hatch patterns on cells.
-            - Default is False
+            - A flag indicating whether to display hatch patterns on cells.
+            - Default is False.
         transpose : bool
-            A flag indicating whether to transpose the dimensions of the cells.
+            - A flag indicating whether to transpose the dimensions of the cells.
+            - Default is False.
         kitiki_cell_kwargs : keyword arguments
-            Additional keyword arguments passed to customize the Rectangle object.
+            - Additional keyword arguments passed to customize the Rectangle object.
+            - Default is {}.
 
         Returns
         -------
-        Rectangle: A Rectangle object representing the configured cell for visualization.
+        matplotlib.patches.Rectangle: A Rectangle object representing the configured cell for KitikiPlot visualization.
         """
 
         # Calculate dimensions for the rectangle based on grid position and size parameters
         rect_dim= (window_gap*(x+1)+ cell_width*(x+1) , cell_height*(y+1))
 
-        # Adjust dimensions if transposing is enabled
+        # Adjust dimensions if transposing is set to 'True'
         if transpose== True:
-            
             rect_dim= (cell_height*(y+1), window_gap*(x+1)+ cell_width*(x+1))
 
         # Return a Rectangle object with specified dimensions and styles based on input parameters
