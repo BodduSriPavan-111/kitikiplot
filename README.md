@@ -10,12 +10,33 @@
 
 ## Why Kitikiplot?
 
+## Examples
+__________Sample 2 examples goes here with attractive features
+
 ## Getting Started
+Install the package via pip
+```javascript
+pip install kitikiplot
+```
+### Usage
+Install the package via pip
+```javascript
+import kitikiplot
+```
 
 ## Contribute
+Contributions are welcomed!
+Follow these steps to get started:
 
-## Author
-<a href="https://www.linkedin.com/in/boddusripavan/"> Boddu Sri Pavan </a>
+1. Fork the repository.
+2. Create a feature branch (git checkout -b feature-name).
+3. Commit your changes (git commit -m "Add new feature").
+4. Push to your branch (git push origin feature-name).
+5. Open a pull request.
+
+## Authors
+<a href="https://www.linkedin.com/in/boddusripavan/"> Boddu Sri Pavan </a> & 
+<a href="https://www.linkedin.com/in/boddu-swathi-sree-2a2a58332/"> Boddu Swathi Sree </a>
 
 ## Citation
 
