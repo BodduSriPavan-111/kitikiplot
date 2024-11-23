@@ -27,6 +27,12 @@ class KitikiCell(ColorConfig):
     window_length : int (optional)
         - The length of each window when converting a list to a DataFrame. 
         - Default is 10.
+    
+    Attributes
+    ----------
+    stride : int
+        - The number of elements to move the window after each iteration when converting a list to a DataFrame.
+        - Default is 1.
     """
     
     def __init__(self, data, stride= 1, window_length= 10):
@@ -43,6 +49,12 @@ class KitikiCell(ColorConfig):
         window_length : int (optional)
             - The length of each window when converting a list to a DataFrame. 
             - Default is 10.
+        
+        Attributes
+        ----------
+        stride : int
+            - The number of elements to move the window after each iteration when converting a list to a DataFrame.
+            - Default is 1.
         """
 
         super().__init__(data=data, stride= stride, window_length= window_length)
@@ -55,6 +67,7 @@ class KitikiCell(ColorConfig):
                 cell_width,
                 cell_height,
                 window_gap,
+                align,
                 cmap,
                 edge_color,
                 fallback_color,
@@ -84,6 +97,10 @@ class KitikiCell(ColorConfig):
         window_gap : float
             - The gap between cells in the grid.
             - Default is 1.0.
+        align : bool
+            - A flag indicating whether to shift consecutive bars vertically (if transpose= False), and
+              horizontally(if transpose= True) by stride value.
+            - Default is True.
         cmap : str or dict
             - If a string, it should be a colormap name to generate colors.
             - If a dictionary, it should map unique values to specific colors.
@@ -115,12 +132,26 @@ class KitikiCell(ColorConfig):
         matplotlib.patches.Rectangle: A Rectangle object representing the configured cell for KitikiPlot visualization.
         """
 
-        # Calculate dimensions for the rectangle based on grid position and size parameters
-        rect_dim= (window_gap*(x+1)+ cell_width*(x+1) , cell_height*(y+1))
+        # Adjust dimensions if 'transpose' is set to 'False'
+        if not transpose:
 
-        # Adjust dimensions if transposing is set to 'True'
-        if transpose== True:
-            rect_dim= (cell_height*(y+1), window_gap*(x+1)+ cell_width*(x+1))
+            # Calculate alignment factor based on whether alignment is enabled
+            align_factor= x*self.stride*cell_height if align else 0
+
+            # Calculate dimensions for the rectangle based on grid position and size parameters
+            rect_dim= (window_gap*(x+1)+ cell_width*(x+1) , cell_height*(y+1)+align_factor)
+
+        # Adjust dimensions if 'transpose' is set to 'True'
+        else:
+
+            # Set cell width to 2.0 for transposed cells to enhance visualization
+            # cell_width= 2.0
+
+            # Calculate alignment factor for transposed configuration based on whether alignment is enabled
+            align_factor= x*self.stride*cell_height if align else 0
+
+            # Calculate dimensions for the rectangle based on grid position and size parameters for transposed layout
+            rect_dim= (cell_height*(y+1)+ align_factor, window_gap*(x+1)+ cell_width*(x+1))
 
         # Return a Rectangle object with specified dimensions and styles based on input parameters
         return Rectangle( rect_dim,

@@ -32,6 +32,9 @@ class ColorConfig:
     ----------
     data : pd.DataFrame
         - The DataFrame containing the input data.
+    stride : int
+        - The number of elements to move the window after each iteration when converting a list to a DataFrame.
+        - Default is 1.
     rows : int
         - The number of rows in the DataFrame.
     cols : int
@@ -63,6 +66,12 @@ class ColorConfig:
         window_length : int (optional)
             - The length of each window when converting a list to a DataFrame. 
             - Default is 10.
+
+        Attributes
+        ----------
+        stride : int
+            - The number of elements to move the window after each iteration when converting a list to a DataFrame.
+            - Default is 1.
         """
 
         # Check if 'data' is of type 'pd.DataFrame' and initialize 'data' attribute.
@@ -74,6 +83,9 @@ class ColorConfig:
 
             # Convert 'list' to 'pd.DataFrame' using stride and window_length, and initialize 'data' attribute.
             self.data= self._convert_list_to_dataframe( data, stride, window_length)
+
+        # Store the stride value
+        self.stride= stride
 
         # Set 'rows' to number of rows in the DataFrame.
         self.rows= self.data.shape[0]

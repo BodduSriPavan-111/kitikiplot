@@ -28,6 +28,12 @@ class KitikiPlot(KitikiCell):
     window_length : int (optional)
         - The length of each window when converting a list to a DataFrame. 
         - Default is 10.
+
+    Attributes
+    ----------
+    stride : int
+        - The number of elements to move the window after each iteration when converting a list to a DataFrame.
+        - Default is 1.
     """
      
     def __init__(self, data, stride= 1, window_length= 10):
@@ -44,6 +50,12 @@ class KitikiPlot(KitikiCell):
         window_length : int (optional)
             - The length of each window when converting a list to a DataFrame. 
             - Default is 10.
+
+        Attributes
+        ----------
+        stride : int
+            - The number of elements to move the window after each iteration when converting a list to a DataFrame.
+            - Default is 1.
         """
         super().__init__(data=data, stride= stride, window_length= window_length)
 
@@ -52,10 +64,11 @@ class KitikiPlot(KitikiCell):
               cell_width= 0.5,
               cell_height= 2.0,
               window_gap= 1.0,
-              window_range= "all",           
+              window_range= "all",  
+              align= True,         
               cmap= "rainbow",
               edge_color= "#000000", 
-              fallback_color= "#FAFAFA", 
+              fallback_color= "#FAFAFA",
               hmap= {},
               fallback_hatch= " ",
               display_hatch= False,
@@ -66,7 +79,8 @@ class KitikiPlot(KitikiCell):
               ytick_prefix= "Frame",
               xticks_rotation= 0, 
               yticks_rotation= 0,
-              title= "KitikiPlot: Intuitive Visualization for Sliding Window", 
+              title= "KitikiPlot: Intuitive Visualization for Sliding Window",
+              display_grid= True,
               display_legend= False,
               legend_hatch= False,
               legend_kwargs= {},
@@ -96,6 +110,10 @@ class KitikiPlot(KitikiCell):
             - The range of windows to display.
             - Use "all" to show all windows or specify a tuple (start_index, end_index). 
             - Default is "all".
+        align : bool
+            - A flag indicating whether to shift consecutive bars vertically (if transpose= False), and
+              horizontally(if transpose= True) by stride value.
+            - Default is True.
         cmap : str or dict
             - If a string, it should be a colormap name to generate colors.
             - If a dictionary, it should map unique values to specific colors.
@@ -159,7 +177,6 @@ class KitikiPlot(KitikiCell):
 
         # Configure color mapping based on user input
         self.color_map= self.color_config( cmap= cmap, edge_color= edge_color, fallback_color= fallback_color )
-        print("Color COnfig beofre start: ", self.color_map)
         
         # Determine if hatching should be displayed based on 'hmap' presence
         if len(hmap)> 0:
@@ -202,12 +219,13 @@ class KitikiPlot(KitikiCell):
             for time_frame in range(self.cols):
 
                 # Create each cell using specified parameters and add it to patches list 
-                cell_gen= self.create(x= index,
+                cell_gen= self.create(  x= index,
                                         y= time_frame,
                                         each_sample= each_sample,
                                         cell_width= cell_width,
                                         cell_height= cell_height,
                                         window_gap= window_gap,
+                                        align= align,
                                         edge_color= edge_color,
                                         cmap= self.color_map,
                                         fallback_color= fallback_color,
@@ -216,12 +234,8 @@ class KitikiPlot(KitikiCell):
                                         display_hatch= display_hatch,
                                         transpose= transpose,
                                         **kitiki_cell_kwargs
-                                           )
+                                    )
                 patches.append( cell_gen )
-
-        # Add all created patches (cells) to axes for rendering
-        for each_patch in patches:
-            ax.add_patch( each_patch )
 
         # Set plot titles
         plt.title(title)
@@ -235,20 +249,46 @@ class KitikiPlot(KitikiCell):
         # Configure ticks based on transposition setting
         if not transpose:
 
-            plt.xticks( [(i+1)*window_gap+(i+1)*cell_width+cell_width/2 for i in range(self.rows)],
+            # Calculate x and y positions for ticks when not transposed
+            x_positions= [(i+1)*window_gap+(i+1)*cell_width+cell_width/2 for i in range(self.rows)]
+            y_positions= [(i+1)*cell_height+cell_height/2 for i in range(self.cols)]
+
+            # Set x-ticks with appropriate labels and rotation
+            plt.xticks( x_positions,
                         [xtick_prefix+'_'+str(i+1) for i in range(self.rows)], rotation= xticks_rotation)
             
-            plt.yticks( [(i+1)*cell_height+cell_height/2 for i in range(self.cols)],
+            # Set y-ticks with appropriate labels and rotation
+            plt.yticks( y_positions,
                         [ytick_prefix+"_"+str(i) for i in range(self.cols)], rotation= yticks_rotation)
-       
+            
+            # Draw grid lines if display_grid is True
+            if display_grid:
+                line_positions= [(i+1)*cell_height for i in range(+self.rows+ self.cols- self.stride+ 1)]
+                ax.hlines(y= line_positions, xmin=0, xmax=max(x_positions) + cell_width, colors='gray', linestyles='--', linewidth=0.5)
+                   
         else:
 
-            plt.yticks( [(i+1)*window_gap+(i+1)*cell_width+cell_width/2 for i in range(self.rows)],
-                        [xtick_prefix+'_'+str(i+1) for i in range(self.rows)], rotation= yticks_rotation)
+            # Calculate x and y positions for ticks when transposed
+            x_positions= [(i+1)*cell_height+cell_height/2 for i in range(self.cols)]
+            y_positions= [(i+1)*window_gap+(i+1)*cell_width+cell_width/2 for i in range(self.rows)]
+
+            # Set x-ticks with appropriate labels and rotation (note the switch of prefixes)
+            plt.xticks( x_positions,
+                        [ytick_prefix+"_"+str(i+1) for i in range(self.cols)], rotation= xticks_rotation)
             
-            plt.xticks( [(i+1)*cell_height+cell_height/2 for i in range(self.cols)],
-                        [ytick_prefix+"_"+str(i) for i in range(self.cols)], rotation= xticks_rotation)
+            # Set y-ticks with appropriate labels and rotation (note the switch of prefixes)
+            plt.yticks( y_positions,
+                        [xtick_prefix+'_'+str(i) for i in range(self.rows)], rotation= yticks_rotation)
             
+            # Draw vertical grid lines if display_grid is True
+            if display_grid:
+                line_positions= [(i+1)*cell_height for i in range(self.rows+ self.cols- self.stride+ 1)]
+                ax.vlines(x= line_positions, ymin=0, ymax=max(x_positions) + cell_width, colors='gray', linestyles='--', linewidth=0.5)
+            
+        # Add all created patches (cells) to axes for rendering
+        for each_patch in patches:
+            ax.add_patch( each_patch )
+
         # Update the limits of the axes based on the current data
         ax.relim()
 
