@@ -3,7 +3,7 @@ File Name: kitiki_color_config.py
 Description: This file defines the 'ColorConfig' class for managing input data(list, dataframe) and configuring color, hatch of kitiki plot
 Author: Boddu Sri Pavan
 Date Created: 21-10-2024
-Last Modified: 20-11-2024
+Last Modified: 23-11-2024
 """
 
 import pandas as pd

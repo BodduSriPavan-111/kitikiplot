@@ -3,7 +3,7 @@ File Name: Kiti.py
 Description: This file defines the 'KitikiPlot' class for generating kitki plot for categorical sequential& time-series data
 Author: Boddu Sri Pavan
 Date Created: 21-10-2024
-Last Modified: 20-11-2024
+Last Modified: 23-11-2024
 """
 
 from .kitiki_cell import KitikiCell
