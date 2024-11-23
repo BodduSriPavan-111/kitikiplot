@@ -10,12 +10,35 @@
 
 ## Why Kitikiplot?
 
+### Features
+
+## Examples
+__________Sample 2 examples goes here with attractive features
+
 ## Getting Started
+Install the package via pip
+```javascript
+pip install kitikiplot
+```
+### Usage
+Install the package via pip
+```javascript
+import kitikiplot
+```
 
 ## Contribute
+Contributions are welcomed!
+Follow these steps to get started:
 
-## Author
-<a href="https://www.linkedin.com/in/boddusripavan/"> Boddu Sri Pavan </a>
+1. Fork the repository.
+2. Create a new branch (git checkout -b name).
+3. Commit your changes (git commit -m "Add new feature").
+4. Push to your branch (git push origin feature-name).
+5. Open a pull request.
+
+## Authors
+<a href="https://www.linkedin.com/in/boddusripavan/"> Boddu Sri Pavan </a> & 
+<a href="https://www.linkedin.com/in/boddu-swathi-sree-2a2a58332/"> Boddu Swathi Sree </a>
 
 ## Citation
 
@@ -25,8 +48,8 @@
 > title = {{KitikiPlot}}, <br/>
 > year = {2024}, <br/>
 > version = {0.0.1}, <br/>
-> url = {https://github.com/learn-hunger/visual-gestures}, <br/>
-> howpublished = {\url{https://www.npmjs.com/package/@learn-hunger/visual-gestures}} <br/>
+> url = {\url{https://github.com/BodduSriPavan-111/kitikiplot}, <br/>
+> howpublished = {\url{https://github.com/BodduSriPavan-111/kitikiplot}} <br/>
 > }
 
 ## Thank You !
