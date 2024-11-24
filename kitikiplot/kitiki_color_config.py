@@ -5,12 +5,13 @@ Author: Boddu Sri Pavan
 Date Created: 21-10-2024
 Last Modified: 23-11-2024
 """
-
+from typing import Tuple, Union, Dict
+import random
+import math
+import numpy as np
 import pandas as pd
 import matplotlib
 import matplotlib.pyplot as plt
-import random
-import math
 
 class ColorConfig:
     """
@@ -51,7 +52,7 @@ class ColorConfig:
         - _convert_list_to_dataframe: Convert a list into a pandas DataFrame using sliding window.
     """
 
-    def __init__(self, data, stride= 1, window_length= 10):
+    def __init__(self, data: Union[pd.DataFrame, list], stride: int = 1, window_length: int = 10) -> None:
         """
         Initialize the ColorConfig object with data and optional parameters.
         Also checks the type of input data and initializes the corresponding attributes.
@@ -94,7 +95,7 @@ class ColorConfig:
         self.cols= self.data.shape[1]
 
     @staticmethod
-    def _convert_list_to_dataframe( data, stride= 1, window_length= 10):
+    def _convert_list_to_dataframe( data: Union[pd.DataFrame, list], stride: int = 1, window_length: int = 10) -> pd.DataFrame:
         """
         Convert list into a 'pd.DataFrame' by creating sliding window of specified window length.
 
@@ -136,7 +137,7 @@ class ColorConfig:
         # Convert the list of rows into a 'pd.DataFrame' and return it
         return pd.DataFrame( l )
 
-    def unique_config(self):
+    def unique_config(self) -> Tuple[np.ndarray, int]:
         """
         Find unique values and no.of unique values from input DataFrame.
 
@@ -158,7 +159,7 @@ class ColorConfig:
         # Return both the array of unique values and their count
         return unique_values, n_unique
 
-    def color_config(self, cmap, edge_color, fallback_color):
+    def color_config(self, cmap: Union[str, Dict], edge_color: str, fallback_color: str) -> Tuple[Dict, str]:
         """
         Configure colors for unique values in the DataFrame.
 
@@ -213,7 +214,7 @@ class ColorConfig:
         # Return the final color mapping and the specified edge color
         return color_map, edge_color
     
-    def hatch_config(self, h_map, fallback_hatch, display_hatch):
+    def hatch_config(self, h_map: Dict, fallback_hatch: str, display_hatch: bool) -> dict:
         """
         Configure hatch patterns for unique values in the DataFrame.
 

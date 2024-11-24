@@ -6,8 +6,11 @@ Date Created: 21-10-2024
 Last Modified: 23-11-2024
 """
 
-from .kitiki_color_config import ColorConfig
+from typing import List, Dict, Union
+import pandas as pd
+import matplotlib.patches as mpatches
 from matplotlib.patches import Rectangle
+from .kitiki_color_config import ColorConfig
 
 class KitikiCell(ColorConfig):
     """
@@ -35,7 +38,7 @@ class KitikiCell(ColorConfig):
         - Default is 1.
     """
     
-    def __init__(self, data, stride= 1, window_length= 10):
+    def __init__(self, data: Union[pd.DataFrame, list], stride: int = 1, window_length: int = 10) -> None:
         """
         Initialize the KitikiCell object by inheriting from ColorConfig.
 
@@ -61,21 +64,21 @@ class KitikiCell(ColorConfig):
 
 
     def create( self,
-                x,
-                y,
-                each_sample,
-                cell_width,
-                cell_height,
-                window_gap,
-                align,
-                cmap,
-                edge_color,
-                fallback_color,
-                hmap,
-                fallback_hatch,
-                display_hatch,
-                transpose,
-                **kitiki_cell_kwargs):
+                x: int,
+                y: int,
+                each_sample: List,
+                cell_width: float,
+                cell_height: float,
+                window_gap: float,
+                align: bool,
+                cmap: Union[str, Dict],
+                edge_color: str,
+                fallback_color: str,
+                hmap: Dict,
+                fallback_hatch: str,
+                display_hatch: bool,
+                transpose: bool,
+                **kitiki_cell_kwargs: dict) -> mpatches.Rectangle:
         
         """
         Create a rectangular cell for the KitikiPlot visualization.

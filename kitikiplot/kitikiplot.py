@@ -6,9 +6,12 @@ Date Created: 21-10-2024
 Last Modified: 23-11-2024
 """
 
-from .kitiki_cell import KitikiCell
+from typing import List, Union
+import pandas as pd
+import matplotlib
 import matplotlib.pyplot as plt
 import matplotlib.patches as mpatches
+from .kitiki_cell import KitikiCell
 
 class KitikiPlot(KitikiCell):
     """
@@ -36,7 +39,7 @@ class KitikiPlot(KitikiCell):
         - Default is 1.
     """
      
-    def __init__(self, data, stride= 1, window_length= 10):
+    def __init__(self, data: Union[pd.DataFrame, List], stride: int = 1, window_length: int = 10) -> None:
         """
         Initialize the KitikiPlot object by inheriting from KitikiCell.
 
@@ -60,32 +63,32 @@ class KitikiPlot(KitikiCell):
         super().__init__(data=data, stride= stride, window_length= window_length)
 
     def plot( self, 
-              figsize= (25, 5),
-              cell_width= 0.5,
-              cell_height= 2.0,
-              window_gap= 1.0,
-              window_range= "all",  
-              align= True,         
-              cmap= "rainbow",
-              edge_color= "#000000", 
-              fallback_color= "#FAFAFA",
-              hmap= {},
-              fallback_hatch= " ",
-              display_hatch= False,
-              transpose= False,
-              xlabel= "Sliding Windows", 
-              ylabel= "Frames", 
-              xtick_prefix= "Window",
-              ytick_prefix= "Frame",
-              xticks_rotation= 0, 
-              yticks_rotation= 0,
-              title= "KitikiPlot: Intuitive Visualization for Sliding Window",
-              display_grid= True,
-              display_legend= False,
-              legend_hatch= False,
-              legend_kwargs= {},
-              kitiki_cell_kwargs= {}
-            ):
+              figsize: tuple = (25, 5),
+              cell_width: float = 0.5,
+              cell_height: float = 2.0,
+              window_gap: float = 1.0,
+              window_range: str | tuple = "all",  
+              align: bool = True,         
+              cmap: str | dict = "rainbow",
+              edge_color: str = "#000000", 
+              fallback_color: str = "#FAFAFA",
+              hmap: dict = {},
+              fallback_hatch: str = " ",
+              display_hatch: bool = False,
+              transpose: bool = False,
+              xlabel: str = "Sliding Windows", 
+              ylabel: str = "Frames", 
+              xtick_prefix: str = "Window",
+              ytick_prefix: str = "Frame",
+              xticks_rotation: int = 0, 
+              yticks_rotation: int = 0,
+              title: str = "KitikiPlot: Intuitive Visualization for Sliding Window",
+              display_grid: bool = True,
+              display_legend: bool = False,
+              legend_hatch: bool = False,
+              legend_kwargs: dict = {},
+              kitiki_cell_kwargs: dict = {}
+            ) -> None:
         """
         Create and display the Kitikiplot visualization.
 
@@ -305,7 +308,7 @@ class KitikiPlot(KitikiCell):
         # Show the plot with all configurations applied
         plt.show()
 
-    def legend(self, ax, color_map, hatch_map, legend_hatch, **legend_kwargs  ):
+    def legend(self, ax: matplotlib.axes.Axes, color_map: dict, hatch_map: dict, legend_hatch: bool, **legend_kwargs: dict ) -> matplotlib.legend.Legend:
         """
         Create and display legend for the KitikiPlot visualization.
 
