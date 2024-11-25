@@ -254,7 +254,7 @@ class KitikiPlot(KitikiCell):
 
             # Calculate x and y positions for ticks when not transposed
             x_positions= [(i+1)*window_gap+(i+1)*cell_width+cell_width/2 for i in range(self.rows)]
-            y_positions= [(i+1)*cell_height+cell_height/2 for i in range(self.cols)]
+            y_positions= [(self.rows+ self.cols- self.stride- i)*cell_height+cell_height/2 for i in range(self.cols)]
 
             # Set x-ticks with appropriate labels and rotation
             plt.xticks( x_positions,
@@ -266,14 +266,14 @@ class KitikiPlot(KitikiCell):
             
             # Draw grid lines if display_grid is True
             if display_grid:
-                line_positions= [(i+1)*cell_height for i in range(+self.rows+ self.cols- self.stride+ 1)]
+                line_positions= [(i+1)*cell_height for i in range(self.rows+ self.cols- self.stride+ 1)]
                 ax.hlines(y= line_positions, xmin=0, xmax=max(x_positions) + cell_width, colors='gray', linestyles='--', linewidth=0.5)
                    
         else:
 
             # Calculate x and y positions for ticks when transposed
             x_positions= [(i+1)*cell_height+cell_height/2 for i in range(self.cols)]
-            y_positions= [(i+1)*window_gap+(i+1)*cell_width+cell_width/2 for i in range(self.rows)]
+            y_positions= [(self.rows-i+1)*window_gap+(self.rows-i+1)*cell_width+cell_width/2 for i in range(self.rows)]
 
             # Set x-ticks with appropriate labels and rotation (note the switch of prefixes)
             plt.xticks( x_positions,
