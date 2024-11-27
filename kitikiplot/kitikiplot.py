@@ -78,10 +78,12 @@ class KitikiPlot(KitikiCell):
               transpose: bool = False,
               xlabel: str = "Sliding Windows", 
               ylabel: str = "Frames", 
-              display_xticks: bool = False,
-              display_yticks: bool = False,
+              display_xticks: bool = True,
+              display_yticks: bool = True,
               xtick_prefix: str = "Window",
               ytick_prefix: str = "Frame",
+              xticks_values: list = [],
+              yticks_values: list = [],
               xticks_rotation: int = 0, 
               yticks_rotation: int = 0,
               title: str = "KitikiPlot: Intuitive Visualization for Sliding Window",
@@ -149,16 +151,22 @@ class KitikiPlot(KitikiCell):
             - Default is "Frames".
         display_xticks : bool (optional)
             - A flag indicating whether to display xticks
-            - Default is False
+            - Default is True
         display_yticks : bool (optional)
             - A flag indicating whether to display yticks
-            - Default is False
+            - Default is True
         xtick_prefix : str (optional)
             - Prefix for x-axis tick labels. 
             - Default is "Window".
         ytick_prefix : str (optional)
             - Prefix for y-axis tick labels. 
             - Default is "Frame".
+        xticks_values : list (optional)
+            - List containing the values for xticks
+            - Default is []
+        yticks_values : list (optional)
+            - List containing the values for yticks
+            - Default is []
         xticks_rotation : int (optional)
             - Rotation angle for x-axis tick labels. 
             - Default is 0.
@@ -263,25 +271,47 @@ class KitikiPlot(KitikiCell):
 
             # Display xticks if 'display_xticks' is True
             if display_xticks:
-                # Set x-ticks with appropriate labels and rotation
-                plt.xticks( x_positions,
-                            [xtick_prefix+'_'+str(i+1) for i in range(self.rows)], rotation= xticks_rotation)
+
+                # Configure xticks based on input 'xticks_values'
+                if xticks_values:
+                    
+                    # Find no.of 'xticks_values'
+                    n_xticks_values= len(xticks_values)
+
+                    # Set x-ticks with the input 'xticks_values'
+                    plt.xticks( x_positions[:n_xticks_values], xticks_values, rotation= xticks_rotation)
+
+                # Configure default xticks
+                else:
+
+                    # Set x-ticks with appropriate labels (with default prefixes) and rotation
+                    plt.xticks( x_positions, [xtick_prefix+'_'+str(i+1) for i in range(self.rows)], rotation= xticks_rotation)
             
             # Else turn off the xticks
             else:
                 plt.xticks([], [])
-                # ax.set_xticks([])
             
             # Display yticks if 'display_yticks' is True
             if display_yticks:
-                # Set y-ticks with appropriate labels and rotation
-                plt.yticks( y_positions,
-                            [ytick_prefix+"_"+str(i) for i in range(self.cols)], rotation= yticks_rotation)
+
+                # Configure yticks based on input 'yticks_values
+                if yticks_values:
+
+                    # Find no.of 'yticks_values'
+                    n_yticks_values= len(yticks_values)
+
+                    # Set y-ticks with the input 'yticks_values'
+                    plt.yticks( y_positions[:n_yticks_values], yticks_values, rotation= yticks_rotation)
+
+                # Configure default yticks
+                else:
+
+                    # Set y-ticks with appropriate labels and rotation
+                    plt.yticks( y_positions, [ytick_prefix+"_"+str(i) for i in range(self.cols)], rotation= yticks_rotation)
             
             # Else turn off the yticks
             else:
                 plt.yticks([], [])
-                # ax.set_yticks([])
                 
             # Draw grid lines if display_grid is True
             if display_grid:
@@ -302,16 +332,50 @@ class KitikiPlot(KitikiCell):
 
             # Display xticks if 'display_xticks' is True
             if display_xticks:
-                # Set x-ticks with appropriate labels and rotation (note the switch of prefixes)
-                plt.xticks( x_positions,
-                            [ytick_prefix+"_"+str(i+1) for i in range(self.cols)], rotation= xticks_rotation)
+
+                # Configure xticks based on input 'xticks_values'
+                if xticks_values:
+
+                    # Find no.of 'xticks_values'
+                    n_xticks_values= len( xticks_values )
+
+                    # Set x-ticks with the input 'xticks_values'
+                    plt.xticks( x_positions[:n_xticks_values], xticks_values, rotation= xticks_rotation)
+
+                # Configure default xticks
+                else:
+
+                    # Set x-ticks with appropriate labels and rotation (note the switch of prefixes)
+                    plt.xticks( x_positions, [ytick_prefix+"_"+str(i+1) for i in range(self.cols)], rotation= xticks_rotation)
             
+            # Else turn off the xticks
+            else:
+                plt.xticks([], [])
+
+
             # Display yticks if 'display_yticks' is True
             if display_yticks:
-                # Set y-ticks with appropriate labels and rotation (note the switch of prefixes)
-                plt.yticks( y_positions,
-                            [xtick_prefix+'_'+str(i) for i in range(self.rows)], rotation= yticks_rotation)
+
+                # Configure yticks based on input 'yticks_values'
+                if yticks_values:
+
+                    # Find no.of 'yticks_values'
+                    n_yticks_values= len( yticks_values )
+
+                    # Set y-ticks with the input 'yticks_values'
+                    plt.yticks( y_positions[:n_yticks_values], yticks_values, rotation= yticks_rotation)
                 
+                # Configure default yticks
+                else:
+
+                    # Set y-ticks with appropriate labels and rotation (note the switch of prefixes)
+                    plt.yticks( y_positions, [xtick_prefix+'_'+str(i) for i in range(self.rows)], rotation= yticks_rotation)
+            
+            # Else turn off the yticks
+            else:
+                plt.yticks([], [])
+                
+            
             # Draw vertical grid lines if display_grid is True
             if display_grid:
                 line_positions= [(i+1)*cell_height for i in range(self.rows+ self.cols- self.stride+ 1)]
