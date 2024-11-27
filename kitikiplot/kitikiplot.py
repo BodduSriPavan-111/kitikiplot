@@ -318,12 +318,6 @@ class KitikiPlot(KitikiCell):
                 line_positions= [(i+1)*cell_height for i in range(self.rows+ self.cols- self.stride+ 1)]
                 ax.hlines(y= y_positions, xmin=0, xmax=max(x_positions) + cell_width, colors='gray', linestyles='--', linewidth=0.5)
 
-            # Set label for 'x'-axis
-            plt.xlabel(xlabel)
-
-            # Set label for 'y'-axis
-            plt.ylabel(ylabel)
-                   
         else:
 
             # Calculate x and y positions for ticks when transposed
@@ -346,7 +340,7 @@ class KitikiPlot(KitikiCell):
                 else:
 
                     # Set x-ticks with appropriate labels and rotation (note the switch of prefixes)
-                    plt.xticks( x_positions, [ytick_prefix+"_"+str(i+1) for i in range(self.cols)], rotation= xticks_rotation)
+                    plt.xticks( x_positions, [xtick_prefix+"_"+str(i+1) for i in range(self.cols)], rotation= xticks_rotation)
             
             # Else turn off the xticks
             else:
@@ -369,7 +363,7 @@ class KitikiPlot(KitikiCell):
                 else:
 
                     # Set y-ticks with appropriate labels and rotation (note the switch of prefixes)
-                    plt.yticks( y_positions, [xtick_prefix+'_'+str(i) for i in range(self.rows)], rotation= yticks_rotation)
+                    plt.yticks( y_positions, [ytick_prefix+'_'+str(i+1) for i in range(self.rows)], rotation= yticks_rotation)
             
             # Else turn off the yticks
             else:
@@ -381,11 +375,11 @@ class KitikiPlot(KitikiCell):
                 line_positions= [(i+1)*cell_height for i in range(self.rows+ self.cols- self.stride+ 1)]
                 ax.vlines(x= line_positions, ymin=0, ymax=max(y_positions) + cell_width, colors='gray', linestyles='--', linewidth=0.5)
 
-            # Set label for 'x'-axis
-            plt.xlabel(ylabel)
+        # Set label for 'x'-axis
+        plt.xlabel(xlabel)
 
-            # Set label for 'y'-axis
-            plt.ylabel(xlabel)
+        # Set label for 'y'-axis
+        plt.ylabel(ylabel)
             
         # Add all created patches (cells) to axes for rendering
         for each_patch in patches:
