@@ -78,12 +78,14 @@ class KitikiPlot(KitikiCell):
               transpose: bool = False,
               xlabel: str = "Sliding Windows", 
               ylabel: str = "Frames", 
+              display_xticks: bool = False,
+              display_yticks: bool = False,
               xtick_prefix: str = "Window",
               ytick_prefix: str = "Frame",
               xticks_rotation: int = 0, 
               yticks_rotation: int = 0,
               title: str = "KitikiPlot: Intuitive Visualization for Sliding Window",
-              display_grid: bool = True,
+              display_grid: bool = False,
               display_legend: bool = False,
               legend_hatch: bool = False,
               legend_kwargs: dict = {},
@@ -145,6 +147,12 @@ class KitikiPlot(KitikiCell):
         ylabel : str (optional)
             - Label for the y-axis. 
             - Default is "Frames".
+        display_xticks : bool (optional)
+            - A flag indicating whether to display xticks
+            - Default is False
+        display_yticks : bool (optional)
+            - A flag indicating whether to display yticks
+            - Default is False
         xtick_prefix : str (optional)
             - Prefix for x-axis tick labels. 
             - Default is "Window".
@@ -160,6 +168,9 @@ class KitikiPlot(KitikiCell):
         title : str (optional)
             - The title of the plot. 
             - Default is "KitikiPlot: Intuitive Visualization for Sliding Window".
+        display_grid : bool (optional)
+            - A flag indicating whether to display grid on the plot.
+            - Default is False.
         display_legend : bool (optional)
             - A flag indicating whether to display a legend on the plot. 
             - Default is False.
@@ -243,12 +254,6 @@ class KitikiPlot(KitikiCell):
         # Set plot titles
         plt.title(title)
 
-        # Set label for 'x'-axis
-        plt.xlabel(xlabel)
-
-        # Set label for 'y'-axis
-        plt.ylabel(ylabel)
-
         # Configure ticks based on transposition setting
         if not transpose:
 
@@ -256,18 +261,38 @@ class KitikiPlot(KitikiCell):
             x_positions= [(i+1)*window_gap+(i+1)*cell_width+cell_width/2 for i in range(self.rows)]
             y_positions= [(self.rows+ self.cols- self.stride- i)*cell_height+cell_height/2 for i in range(self.cols)]
 
-            # Set x-ticks with appropriate labels and rotation
-            plt.xticks( x_positions,
-                        [xtick_prefix+'_'+str(i+1) for i in range(self.rows)], rotation= xticks_rotation)
+            # Display xticks if 'display_xticks' is True
+            if display_xticks:
+                # Set x-ticks with appropriate labels and rotation
+                plt.xticks( x_positions,
+                            [xtick_prefix+'_'+str(i+1) for i in range(self.rows)], rotation= xticks_rotation)
             
-            # Set y-ticks with appropriate labels and rotation
-            plt.yticks( y_positions,
-                        [ytick_prefix+"_"+str(i) for i in range(self.cols)], rotation= yticks_rotation)
+            # Else turn off the xticks
+            else:
+                plt.xticks([], [])
+                # ax.set_xticks([])
             
+            # Display yticks if 'display_yticks' is True
+            if display_yticks:
+                # Set y-ticks with appropriate labels and rotation
+                plt.yticks( y_positions,
+                            [ytick_prefix+"_"+str(i) for i in range(self.cols)], rotation= yticks_rotation)
+            
+            # Else turn off the yticks
+            else:
+                plt.yticks([], [])
+                # ax.set_yticks([])
+                
             # Draw grid lines if display_grid is True
             if display_grid:
                 line_positions= [(i+1)*cell_height for i in range(self.rows+ self.cols- self.stride+ 1)]
-                ax.hlines(y= line_positions, xmin=0, xmax=max(x_positions) + cell_width, colors='gray', linestyles='--', linewidth=0.5)
+                ax.hlines(y= y_positions, xmin=0, xmax=max(x_positions) + cell_width, colors='gray', linestyles='--', linewidth=0.5)
+
+            # Set label for 'x'-axis
+            plt.xlabel(xlabel)
+
+            # Set label for 'y'-axis
+            plt.ylabel(ylabel)
                    
         else:
 
@@ -275,18 +300,28 @@ class KitikiPlot(KitikiCell):
             x_positions= [(i+1)*cell_height+cell_height/2 for i in range(self.cols)]
             y_positions= [(self.rows-i+1)*window_gap+(self.rows-i+1)*cell_width+cell_width/2 for i in range(self.rows)]
 
-            # Set x-ticks with appropriate labels and rotation (note the switch of prefixes)
-            plt.xticks( x_positions,
-                        [ytick_prefix+"_"+str(i+1) for i in range(self.cols)], rotation= xticks_rotation)
+            # Display xticks if 'display_xticks' is True
+            if display_xticks:
+                # Set x-ticks with appropriate labels and rotation (note the switch of prefixes)
+                plt.xticks( x_positions,
+                            [ytick_prefix+"_"+str(i+1) for i in range(self.cols)], rotation= xticks_rotation)
             
-            # Set y-ticks with appropriate labels and rotation (note the switch of prefixes)
-            plt.yticks( y_positions,
-                        [xtick_prefix+'_'+str(i) for i in range(self.rows)], rotation= yticks_rotation)
-            
+            # Display yticks if 'display_yticks' is True
+            if display_yticks:
+                # Set y-ticks with appropriate labels and rotation (note the switch of prefixes)
+                plt.yticks( y_positions,
+                            [xtick_prefix+'_'+str(i) for i in range(self.rows)], rotation= yticks_rotation)
+                
             # Draw vertical grid lines if display_grid is True
             if display_grid:
                 line_positions= [(i+1)*cell_height for i in range(self.rows+ self.cols- self.stride+ 1)]
-                ax.vlines(x= line_positions, ymin=0, ymax=max(x_positions) + cell_width, colors='gray', linestyles='--', linewidth=0.5)
+                ax.vlines(x= line_positions, ymin=0, ymax=max(y_positions) + cell_width, colors='gray', linestyles='--', linewidth=0.5)
+
+            # Set label for 'x'-axis
+            plt.xlabel(ylabel)
+
+            # Set label for 'y'-axis
+            plt.ylabel(xlabel)
             
         # Add all created patches (cells) to axes for rendering
         for each_patch in patches:
