@@ -267,7 +267,7 @@ class KitikiPlot(KitikiCell):
 
             # Calculate x and y positions for ticks when not transposed
             x_positions= [(i+1)*window_gap+(i+1)*cell_width+cell_width/2 for i in range(self.rows)]
-            y_positions= [(self.rows+ self.cols- self.stride- i)*cell_height+cell_height/2 for i in range(self.cols)]
+            y_positions= [(self.rows+ self.cols- self.stride- i)*cell_height+cell_height/2 for i in range(self.stride*self.rows+self.cols)]
 
             # Display xticks if 'display_xticks' is True
             if display_xticks:
@@ -321,7 +321,7 @@ class KitikiPlot(KitikiCell):
         else:
 
             # Calculate x and y positions for ticks when transposed
-            x_positions= [(i+1)*cell_height+cell_height/2 for i in range(self.cols)]
+            x_positions= [(i+1)*cell_height+cell_height/2 for i in range(self.stride*(self.rows-1)+ self.cols)]
             y_positions= [(self.rows-i+1)*window_gap+(self.rows-i+1)*cell_width+cell_width/2 for i in range(self.rows)]
 
             # Display xticks if 'display_xticks' is True
