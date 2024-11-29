@@ -1,13 +1,13 @@
 ![plot](./assets/banner.png)
 # KitikiPlot
-
+<!--
 ## Table of Contents</h2>
 - [Why Kitkiplot?](#What-and-why)
 - [Getting Started](#getting-started)
 - [Contribute](#contribute)
 - [Maintainer(s)](#maintainer(s))
 - [Citation](#citation)
-
+-->
 ## Why Kitikiplot?
 
 ## Examples
