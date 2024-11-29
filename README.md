@@ -10,6 +10,12 @@
 
 ## Why Kitikiplot?
 
+## Examples
+Genome
+![plot](./assets/Genome.png)
+<be>
+Weather Pattern
+![plot](./assets/Weather_Pattern.png)
 ### Features
 
 ## Examples
