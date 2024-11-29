@@ -7,8 +7,9 @@
 - [Contribute](#contribute)
 - [Maintainer(s)](#maintainer(s))
 - [Citation](#citation)
--->
+
 ## Why Kitikiplot?
+-->
 
 ## Examples
 Genome
