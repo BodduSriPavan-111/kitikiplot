@@ -40,7 +40,7 @@ ktk.plot( display_legend= True ) # Display the legend
 ```
 Check out the complete <b>guide of customization</b> [here](https://github.com/BodduSriPavan-111/kitikiplot)
 
-### Authors
+### Author
 <a href="https://www.linkedin.com/in/boddusripavan/"> Boddu Sri Pavan </a> & 
 <a href="https://www.linkedin.com/in/boddu-swathi-sree-2a2a58332/"> Boddu Swathi Sree </a>
 
