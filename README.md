@@ -1,5 +1,8 @@
 ![plot](./assets/banner.png)
 # KitikiPlot
+KitikiPlot is a Python library for visualizing sequential and time-series categorical "Sliding Window" data. <br>
+(the term 'kitiki' means 'window' in Telugu)
+
 <!--
 ## Table of Contents</h2>
 - [Why Kitkiplot?](#What-and-why)
@@ -11,42 +14,33 @@
 ## Why Kitikiplot?
 -->
 
-## Examples
-Genome
+### Examples
+Genome Visualization can be found in [Genome.ipynb](https://github.com/BodduSriPavan-111/kitikiplot/blob/add-comments/examples/Genome.ipynb)
 ![plot](./assets/Genome.png)
-<be>
-CO Trend in Air
-![plot](./assets/Air_Quality_CO.png)
-Weather Pattern
+<br> 
+Weather Pattern in [Weather Pattern.ipynb](https://github.com/BodduSriPavan-111/kitikiplot/blob/add-comments/examples/Weather_Pattern.ipynb)
 ![plot](./assets/Weather_Pattern.png)
+<br>
+CO Trend in Air in [Air_Quality.ipynb](https://github.com/BodduSriPavan-111/kitikiplot/blob/add-comments/examples/Air_Quality.ipynb)
+![plot](./assets/Air_Quality_CO.png)
+<br>
 
-### Features
-
-## Examples
-__________Sample 2 examples goes here with attractive features
-
-## Getting Started
+### Getting Started
 Install the package via pip
 ```javascript
 pip install kitikiplot
 ```
-### Usage
-Install the package via pip
+#### Usage
 ```javascript
-import kitikiplot
+import kitikiplot as ktk
+
+ktk= KitikiPlot( data= # DataFrame or list of sliding window data )
+
+ktk.plot( display_legend= True ) # Display the legend
 ```
+Check out the complete <b>guide of customization</b> [here](https://github.com/BodduSriPavan-111/kitikiplot)
 
-## Contribute
-Contributions are welcomed!
-Follow these steps to get started:
-
-1. Fork the repository.
-2. Create a new branch (git checkout -b name).
-3. Commit your changes (git commit -m "Add new feature").
-4. Push to your branch (git push origin feature-name).
-5. Open a pull request.
-
-## Authors
+### Authors
 <a href="https://www.linkedin.com/in/boddusripavan/"> Boddu Sri Pavan </a> & 
 <a href="https://www.linkedin.com/in/boddu-swathi-sree-2a2a58332/"> Boddu Swathi Sree </a>
 
