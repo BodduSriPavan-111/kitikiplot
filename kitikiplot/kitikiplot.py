@@ -306,8 +306,11 @@ class KitikiPlot(KitikiCell):
                 # Configure default yticks
                 else:
 
+                    print( "Y positions: ",len(y_positions))
+                    print( "cols: ", self.cols)
+
                     # Set y-ticks with appropriate labels and rotation
-                    plt.yticks( y_positions, [ytick_prefix+"_"+str(i) for i in range(self.cols)], rotation= yticks_rotation)
+                    plt.yticks( y_positions, [ytick_prefix+"_"+str(i) for i in range(self.stride*self.rows+self.cols)], rotation= yticks_rotation)
             
             # Else turn off the yticks
             else:
@@ -340,7 +343,7 @@ class KitikiPlot(KitikiCell):
                 else:
 
                     # Set x-ticks with appropriate labels and rotation (note the switch of prefixes)
-                    plt.xticks( x_positions, [xtick_prefix+"_"+str(i+1) for i in range(self.cols)], rotation= xticks_rotation)
+                    plt.xticks( x_positions, [xtick_prefix+"_"+str(i+1) for i in range(self.stride*(self.rows-1)+ self.cols)], rotation= xticks_rotation)
             
             # Else turn off the xticks
             else:
