@@ -15,8 +15,11 @@
 Genome
 ![plot](./assets/Genome.png)
 <be>
+CO Trend in Air
+![plot](./assets/Air_Quality_CO.png)
 Weather Pattern
 ![plot](./assets/Weather_Pattern.png)
+
 ### Features
 
 ## Examples
