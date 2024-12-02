@@ -14,13 +14,13 @@ KitikiPlot is a Python library for visualizing sequential and time-series catego
 ## Why Kitikiplot?
 -->
 
-### Examples
+### Examples 
 Genome Visualization can be found in [Genome.ipynb](https://github.com/BodduSriPavan-111/kitikiplot/blob/add-comments/examples/Genome.ipynb)
 ![plot](./assets/Genome.png)
-<br> 
+<br><br>
 Weather Pattern in [Weather Pattern.ipynb](https://github.com/BodduSriPavan-111/kitikiplot/blob/add-comments/examples/Weather_Pattern.ipynb)
 ![plot](./assets/Weather_Pattern.png)
-<br>
+<br><br>
 CO Trend in Air in [Air_Quality.ipynb](https://github.com/BodduSriPavan-111/kitikiplot/blob/add-comments/examples/Air_Quality.ipynb)
 ![plot](./assets/Air_Quality_CO.png)
 <br>
@@ -32,7 +32,7 @@ pip install kitikiplot
 ```
 #### Usage
 ```javascript
-import kitikiplot as ktk
+from kitikiplot import KitikiPlot
 
 ktk= KitikiPlot( data= # DataFrame or list of sliding window data )
 
@@ -46,10 +46,9 @@ Check out the complete <b>guide of customization</b> [here](https://github.com/B
 
 ## Citation
 
-> @software{ <br/>
-> package = {@learn-hunger/visual-gestures}, <br/>
-> authors = {Boddu Sri Pavan& Boddu Swathi Sree}, <br/>
-> title = {{KitikiPlot}}, <br/>
+> @software{ kitikiplot_2024 <br/>
+> author = {Boddu Sri Pavan and Boddu Swathi Sree}, <br/>
+> title = {{KitikiPlot: A Python library to visualize categorical sliding window data}}, <br/>
 > year = {2024}, <br/>
 > version = {0.0.1}, <br/>
 > url = {\url{https://github.com/BodduSriPavan-111/kitikiplot}, <br/>
