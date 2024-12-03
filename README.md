@@ -38,7 +38,7 @@ ktk= KitikiPlot( data= # DataFrame or list of sliding window data )
 
 ktk.plot( display_legend= True ) # Display the legend
 ```
-Check out the complete <b>guide of customization</b> [here](https://github.com/BodduSriPavan-111/kitikiplot)
+Check out the complete <b>guide of customization</b> [here](https://github.com/BodduSriPavan-111/kitikiplot/blob/main/examples/Usage_Guide.ipynb)
 
 ### Author
 <a href="https://www.linkedin.com/in/boddusripavan/"> Boddu Sri Pavan </a> & 
