@@ -46,7 +46,7 @@ Check out the complete <b>guide of customization</b> [here](https://github.com/B
 
 ## Citation
 
-> @software{ kitikiplot_2024 <br/>
+> @software{ KitikiPlot_2024 <br/>
 > author = {Boddu Sri Pavan and Boddu Swathi Sree}, <br/>
 > title = {{KitikiPlot: A Python library to visualize categorical sliding window data}}, <br/>
 > year = {2024}, <br/>
