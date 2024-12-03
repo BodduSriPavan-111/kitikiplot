@@ -8,7 +8,7 @@ setup(
     name= "kitikiplot",
     version= "0.1.1",
     author="Boddu Sri Pavan and Boddu Swathi Sree",
-    author_email="your-email@example.com",  # Update with your email
+    author_email="boddusripavan111@gmail.com",  # Update with your email
     description="A Python library for visualizing sequential and time-series categorical Sliding Window data.",
     long_description=long_description,
     long_description_content_type= "text/markdown",
@@ -20,12 +20,6 @@ setup(
         "Operating System :: OS Independent",
         "Topic :: Scientific/Engineering :: Visualization",
     ],
-    # python_requires=">=3.11.0",
-    # install_requires=[
-    #     "numpy",
-    #     "pandas",
-    #     "matplotlib"
-    # ],
     project_urls={
         "Bug Tracker": "https://github.com/BodduSriPavan-111/kitikiplot/issues",
         "Documentation": "https://github.com/BodduSriPavan-111/kitikiplot/wiki",
