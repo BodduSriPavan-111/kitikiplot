@@ -1,3 +1,22 @@
+Metadata-Version: 2.1
+Name: kitikiplot
+Version: 0.1.1
+Summary: A Python library for visualizing sequential and time-series categorical Sliding Window data.
+Home-page: https://github.com/BodduSriPavan-111/kitikiplot
+Author: Boddu Sri Pavan and Boddu Swathi Sree
+Author-email: your-email@example.com
+License: LICENSE
+Project-URL: Bug Tracker, https://github.com/BodduSriPavan-111/kitikiplot/issues
+Project-URL: Documentation, https://github.com/BodduSriPavan-111/kitikiplot/wiki
+Project-URL: Source Code, https://github.com/BodduSriPavan-111/kitikiplot
+Keywords: kitikiplot,sliding window,sequential,time-series,categorical data
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Classifier: Topic :: Scientific/Engineering :: Visualization
+Description-Content-Type: text/markdown
+License-File: LICENSE
+
 ![plot](https://drive.google.com/uc?id=1kzO8VZC38-ktIezrnFvH1b7K84zGBrsL)
 # KitikiPlot
 KitikiPlot is a Python library for visualizing sequential and time-series categorical "Sliding Window" data. <br>
