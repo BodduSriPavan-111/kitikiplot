@@ -267,6 +267,7 @@ class KitikiPlot(KitikiCell):
 
             # Calculate x and y positions for ticks when not transposed
             x_positions= [(i+1)*window_gap+(i+1)*cell_width+cell_width/2 for i in range(self.rows)]
+            
             y_positions= [(self.rows+ self.cols- self.stride- i)*cell_height+cell_height/2 for i in range(self.stride*self.rows+self.cols)]
 
             # Display xticks if 'display_xticks' is True
@@ -306,9 +307,6 @@ class KitikiPlot(KitikiCell):
                 # Configure default yticks
                 else:
 
-                    print( "Y positions: ",len(y_positions))
-                    print( "cols: ", self.cols)
-
                     # Set y-ticks with appropriate labels and rotation
                     plt.yticks( y_positions, [ytick_prefix+"_"+str(i) for i in range(self.stride*self.rows+self.cols)], rotation= yticks_rotation)
             
@@ -318,15 +316,15 @@ class KitikiPlot(KitikiCell):
                 
             # Draw grid lines if display_grid is True
             if display_grid:
-                line_positions= [(i+1)*cell_height for i in range(self.rows+ self.cols- self.stride+ 1)]
-                ax.hlines(y= y_positions, xmin=0, xmax=max(x_positions) + cell_width, colors='gray', linestyles='--', linewidth=0.5)
+                # line_positions= [(i+1)*cell_height for i in range(self.rows+ self.cols- self.stride+ 1)]
+                hline_positions= [(self.rows+ self.cols- self.stride- i)*cell_height for i in range(self.stride*self.rows+self.cols)] # Development under progress
+                ax.hlines(y= hline_positions+[max(hline_positions)+cell_height], xmin=0, xmax=max(x_positions) + cell_width, colors='gray', linestyles='--', linewidth=0.5)
 
         else:
 
             # Calculate x and y positions for ticks when transposed
             x_positions= [(i+1)*cell_height+cell_height/2 for i in range(self.stride*(self.rows-1)+ self.cols)]
             y_positions= [(self.rows-i+1)*window_gap+(self.rows-i+1)*cell_width+cell_width/2 for i in range(self.rows)]
-
             # Display xticks if 'display_xticks' is True
             if display_xticks:
 
