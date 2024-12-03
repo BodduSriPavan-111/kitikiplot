@@ -1,7 +1,7 @@
 ![plot](./assets/banner.png)
 # KitikiPlot
 KitikiPlot is a Python library for visualizing sequential and time-series categorical "Sliding Window" data. <br>
-(the term 'kitiki' means 'window' in Telugu)
+(The term 'kitiki' means 'window' in Telugu)
 
 <!--
 ## Table of Contents</h2>
