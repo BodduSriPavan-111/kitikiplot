@@ -22,6 +22,6 @@ git push origin my-feature-branch
 ```
 - **Open a pull request** to the original repository.
 ## Code of Conduct:
-Please follow our <a href="">Code of Conduct</a> when participating.
+Please follow our <a href="https://github.com/BodduSriPavan-111/kitikiplot/blob/main/code_of_conduct.md">Code of Conduct</a> when participating.
 
 ### Thank You for Contributing !
