@@ -139,10 +139,10 @@ class KitikiCell(ColorConfig):
         if not transpose:
 
             # Calculate alignment factor based on whether alignment is enabled
-            align_factor= x*self.stride*cell_height if align else 0
+            align_factor= (self.rows-x)*self.stride*cell_height if align else 0
 
             # Calculate dimensions for the rectangle based on grid position and size parameters
-            rect_dim= (window_gap*(self.rows-x)+ cell_width*(self.rows-x) , cell_height*(y+1)+align_factor)
+            rect_dim= (window_gap*(x+1)+ cell_width*(x+1) , cell_height*(self.cols-y-1)+align_factor)
 
         # Adjust dimensions if 'transpose' is set to 'True'
         else:
