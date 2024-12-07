@@ -25,7 +25,7 @@ Genome Visualization can be found in [Genome.ipynb](https://github.com/BodduSriP
 ![plot](https://drive.google.com/uc?id=1vpRcqUsalg64ILluCgcXfoaUfcqQfHVN)
 <br><br>
 Weather Pattern in [Weather Pattern.ipynb](https://github.com/BodduSriPavan-111/kitikiplot/blob/add-comments/examples/Weather_Pattern.ipynb)
-![plot](https://drive.google.com/uc?id=1HMcwmtPA4H3Xkk53xI8CEiNahqIY-deQ)
+![plot](https://drive.google.com/uc?id=1tl5XefYfBqQTap1X0iDNoY3upk0FHFni)
 <br><br>
 CO Trend in Air in [Air_Quality.ipynb](https://github.com/BodduSriPavan-111/kitikiplot/blob/add-comments/examples/Air_Quality.ipynb)
 ![plot](https://drive.google.com/uc?id=1LTFgNDX-OlTwkSQjsWA3x6xHRLyu_a6O)
