@@ -6,7 +6,7 @@ with open("README.md", "r", encoding="utf-8") as f:
 
 setup(
     name= "kitikiplot",
-    version= "0.1.1",
+    version= "0.1.2",
     author="Boddu Sri Pavan and Boddu Swathi Sree",
     author_email="boddusripavan111@gmail.com",  # Update with your email
     description="A Python library for visualizing sequential and time-series categorical Sliding Window data.",
@@ -25,11 +25,11 @@ setup(
         "Documentation": "https://github.com/BodduSriPavan-111/kitikiplot/wiki",
         "Source Code": "https://github.com/BodduSriPavan-111/kitikiplot",
     },
-    keywords=[
-        "kitikiplot", 
+    keywords=[ 
         "sliding window", 
         "sequential",
-        "time-series", 
+        "time-series",
+        "genome", 
         "categorical data",
     ],
     license="LICENSE",
