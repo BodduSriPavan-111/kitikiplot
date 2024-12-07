@@ -1,9 +1,13 @@
 ![plot](https://drive.google.com/uc?id=1kzO8VZC38-ktIezrnFvH1b7K84zGBrsL)
 
+<div align="center">
+
 ![PyPI](https://img.shields.io/pypi/v/kitikiplot?color=blueviolet)
 ![PyPI - Downloads](https://img.shields.io/pypi/dm/kitikiplot?color=gold)
 [![DOI](https://zenodo.org/badge/874294211.svg)](https://doi.org/10.5281/zenodo.14292811)
 ![License](https://img.shields.io/github/license/BodduSriPavan-111/kitikiplot?color=green)
+
+</div>
 
 # KitikiPlot
 KitikiPlot is a Python library for visualizing sequential and time-series categorical "Sliding Window" data. <br>
