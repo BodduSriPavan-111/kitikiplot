@@ -60,7 +60,7 @@ Please refer <a href="https://github.com/BodduSriPavan-111/kitikiplot/blob/main/
 > year = {2024}, <br/>
 > version = {0.0.1}, <br/>
 > url = {\url{https://github.com/BodduSriPavan-111/kitikiplot}, <br/>
-> doi = {10.5281/zenodo.14292812} <br/>
+> doi = {10.5281/zenodo.14293030} <br/>
 > howpublished = {\url{https://github.com/BodduSriPavan-111/kitikiplot}} <br/>
 > }
 
