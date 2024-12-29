@@ -36,15 +36,17 @@ CO Trend in Air in [Air_Quality.ipynb](https://github.com/BodduSriPavan-111/kiti
 <br>
 
 ### Getting Started
-Install the package via pip
-```javascript
+Install the package via pip:
+```
 pip install kitikiplot
 ```
 #### Usage
-```javascript
+```py
 from kitikiplot import KitikiPlot
 
-ktk= KitikiPlot( data= # DataFrame or list of sliding window data )
+data = [] # DataFrame or list of sliding window data
+
+ktk= KitikiPlot( data= data )
 
 ktk.plot( display_legend= True ) # Display the legend
 ```
