@@ -44,7 +44,9 @@ pip install kitikiplot
 ```py
 from kitikiplot import KitikiPlot
 
-ktk= KitikiPlot( data= [] ) # DataFrame or list of sliding window data
+data = [] # DataFrame or list of sliding window data
+
+ktk= KitikiPlot( data= data )
 
 ktk.plot( display_legend= True ) # Display the legend
 ```
