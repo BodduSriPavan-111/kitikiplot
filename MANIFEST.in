@@ -1,0 +1,21 @@
+# Include the 'README.md' and license files
+include README.md
+include LICENSE
+
+# Include all Python files
+recursive-include kitikiplot *.py
+
+# Include data files if needed (modify path if specific)
+recursive-include kitikiplot/data *
+
+# Include configuration and metadata files
+include pyproject.toml
+include setup.py
+
+# Exclude unnecessary files
+global-exclude __pycache__/*
+global-exclude *.py[cod]
+global-exclude *.log
+global-exclude *.tmp
+global-exclude *.swp
+global-exclude .DS_Store

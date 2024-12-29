@@ -1,0 +1,42 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Distribution / packaging
+build/
+dist/
+*.egg-info/
+*.egg
+
+# Python setup tools artifacts
+*.log
+
+# Local environment or virtual environment
+venv/
+ENV/
+env/
+
+# Matplotlib cache
+.matplotlib/
+
+# Common IDEs and editors
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# Operating System files
+.DS_Store
+Thumbs.db
+
+# Metadata files
+*.ipynb_checkpoints/
+
+# Documentation
+docs/_build/
+
+# Miscellaneous
+*.log
+*.tmp
+*.swp
