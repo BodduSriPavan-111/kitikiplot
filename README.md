@@ -13,6 +13,8 @@
 KitikiPlot is a Python library for visualizing sequential and time-series categorical "Sliding Window" data. <br>
 (The term 'kitiki' means 'window' in Telugu)
 
+Our research paper is published in **GIS Science Journal** Volume 12 Issue 1, 186-193, 2025 (Scopus indexed with Impact factor **6.1**). </br>
+Read it here: <a href="https://zenodo.org/records/14632005">https://zenodo.org/records/14632005</a>
 <!--
 ## Table of Contents</h2>
 - [Why Kitkiplot?](#What-and-why)
@@ -59,15 +61,25 @@ Please refer <a href="https://github.com/BodduSriPavan-111/kitikiplot/blob/main/
 <a href="https://www.linkedin.com/in/boddu-swathi-sree-2a2a58332/"> Boddu Swathi Sree </a>
 
 ## Citation
+APA <br>
+> Boddu Sri Pavan, Chandrasheker Thummanagoti, & Boddu Swathi Sree. (2025). KitikiPlot A Python library to visualize categorical sliding window data. https://doi.org/10.5281/zenodo.14632005
 
-> @software{ KitikiPlot_2024 <br/>
-> author = {Boddu Sri Pavan and Boddu Swathi Sree}, <br/>
-> title = {{KitikiPlot: A Python library to visualize categorical sliding window data}}, <br/>
-> year = {2024}, <br/>
-> version = {0.1.2}, <br/>
-> url = {\url{https://github.com/BodduSriPavan-111/kitikiplot}, <br/>
-> doi = {10.5281/zenodo.14293030} <br/>
-> howpublished = {\url{https://github.com/BodduSriPavan-111/kitikiplot}} <br/>
-> }
+IEEE <br>
+> Boddu Sri Pavan, Chandrasheker Thummanagotiand Boddu Swathi Sree, “KitikiPlot A Python library to visualize categorical sliding window data”, 2025, doi: 10.5281/zenodo.14632005.
+
+BibTeX <br>
+> @misc{boddu_sri_pavan_2025_14632005,       <br>
+>  author       = {Boddu Sri Pavan and       <br>
+>                  Chandrasheker Thummanagoti and       <br>
+>                  Boddu Swathi Sree},       <br>
+>  title        = {KitikiPlot A Python library to visualize       <br>
+>                   categorical sliding window data       <br>
+>                  },       <br>
+>  month        = jan,       <br>
+>  year         = 2025,       <br>
+>  publisher    = {Zenodo},       <br>
+>  doi          = {10.5281/zenodo.14632005},       <br>
+>  url          = {https://doi.org/10.5281/zenodo.14632005},       <br>
+>}
 
 ## Thank You !
