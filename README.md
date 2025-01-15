@@ -13,7 +13,9 @@
 KitikiPlot is a Python library for visualizing sequential and time-series categorical "Sliding Window" data. <br>
 (The term 'kitiki' means 'window' in Telugu)
 
-Our research paper is published in **GIS Science Journal** Volume 12 Issue 1, 186-193, 2025 (Scopus indexed with Impact factor **6.1**). </br>
+Our preprint is published in **TechRxiv**. Find it <a href="https://www.techrxiv.org/users/877016/articles/1256589-kitikiplot-a-python-library-to-visualize-categorical-sliding-window-data"> here <a/>
+
+Research paper is published in **GIS Science Journal** Volume 12 Issue 1, 186-193, 2025 (Scopus indexed with Impact factor **6.1**). </br>
 Read it here: <a href="https://zenodo.org/records/14632005">https://zenodo.org/records/14632005</a>
 <!--
 ## Table of Contents</h2>
@@ -61,8 +63,15 @@ Please refer <a href="https://github.com/BodduSriPavan-111/kitikiplot/blob/main/
 <a href="https://www.linkedin.com/in/boddu-swathi-sree-2a2a58332/"> Boddu Swathi Sree </a>
 
 ## Citation
+**Preprint** <br>
+
 APA <br>
-> Boddu Sri Pavan, Chandrasheker Thummanagoti, & Boddu Swathi Sree. (2025). KitikiPlot A Python library to visualize categorical sliding window data. https://doi.org/10.5281/zenodo.14632005
+> Boddu Sri Pavan, Boddu Swathi Sree. (2025). KitikiPlot: A Python library to visualize categorical sliding window data. Authorea Preprints. <br>
+
+**Research Paper**
+
+APA <br>
+> Boddu Sri Pavan, Chandrasheker Thummanagoti, & Boddu Swathi Sree. (2025). KitikiPlot A Python library to visualize categorical sliding window data. https://doi.org/10.5281/zenodo.14632005.
 
 IEEE <br>
 > Boddu Sri Pavan, Chandrasheker Thummanagotiand Boddu Swathi Sree, “KitikiPlot A Python library to visualize categorical sliding window data”, 2025, doi: 10.5281/zenodo.14632005.
