@@ -63,13 +63,6 @@ Please refer <a href="https://github.com/BodduSriPavan-111/kitikiplot/blob/main/
 <a href="https://www.linkedin.com/in/boddu-swathi-sree-2a2a58332/"> Boddu Swathi Sree </a>
 
 ## Citation
-**Preprint** <br>
-
-APA <br>
-> Boddu Sri Pavan, Boddu Swathi Sree. (2025). KitikiPlot: A Python library to visualize categorical sliding window data. Authorea Preprints. <br>
-
-**Research Paper**
-
 APA <br>
 > Boddu Sri Pavan, Chandrasheker Thummanagoti, & Boddu Swathi Sree. (2025). KitikiPlot A Python library to visualize categorical sliding window data. https://doi.org/10.5281/zenodo.14632005.
 
