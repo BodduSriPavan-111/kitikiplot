@@ -316,8 +316,7 @@ class KitikiPlot(KitikiCell):
                 
             # Draw grid lines if display_grid is True
             if display_grid:
-                # line_positions= [(i+1)*cell_height for i in range(self.rows+ self.cols- self.stride+ 1)]
-                hline_positions= [(self.rows+ self.cols- self.stride- i)*cell_height for i in range(self.stride*self.rows+self.cols)] # Development under progress
+                hline_positions= [(self.rows+ self.cols- self.stride- i)*cell_height for i in range(self.stride*self.rows+self.cols+1)]
                 ax.hlines(y= hline_positions+[max(hline_positions)+cell_height], xmin=0, xmax=max(x_positions) + cell_width, colors='gray', linestyles='--', linewidth=0.5)
 
         else:
@@ -373,8 +372,8 @@ class KitikiPlot(KitikiCell):
             
             # Draw vertical grid lines if display_grid is True
             if display_grid:
-                line_positions= [(i+1)*cell_height for i in range(self.rows+ self.cols- self.stride+ 1)]
-                ax.vlines(x= line_positions, ymin=0, ymax=max(y_positions) + cell_width, colors='gray', linestyles='--', linewidth=0.5)
+                vline_positions= [(i+1)*cell_height for i in range(self.stride*(self.rows-1)+ self.cols+1)]
+                ax.vlines(x= vline_positions, ymin=0, ymax=max(y_positions) + cell_width, colors='gray', linestyles='--', linewidth=0.5)
 
         # Set label for 'x'-axis
         plt.xlabel(xlabel)

@@ -3,7 +3,7 @@ File Name: kitiki_cell.py
 Description: This file defines the 'KitikiCell' class for each rectangular cell in kitiki plot
 Author: Boddu Sri Pavan
 Date Created: 21-10-2024
-Last Modified: 23-11-2024
+Last Modified: 07-12-2024
 """
 
 from typing import List, Dict, Union
