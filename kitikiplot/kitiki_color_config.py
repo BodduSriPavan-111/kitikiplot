@@ -1,10 +1,12 @@
 """
 File Name: kitiki_color_config.py
-Description: This file defines the 'ColorConfig' class for managing input data(list, dataframe) and configuring color, hatch of kitiki plot
+Description: This file defines the 'ColorConfig' class for managing input data(list, dataframe) and configuring color, hatch of KitikiPlot
 Author: Boddu Sri Pavan
 Date Created: 21-10-2024
-Last Modified: 23-11-2024
+Last Modified: 19-02-2025
 """
+
+# Import necessary libraries
 from typing import Tuple, Union, Dict
 import random
 import math
@@ -12,6 +14,7 @@ import numpy as np
 import pandas as pd
 import matplotlib
 import matplotlib.pyplot as plt
+import gc
 
 class ColorConfig:
     """
@@ -134,7 +137,14 @@ class ColorConfig:
             # Append the row to the list
             l.append( row_data )
         
-        # Convert the list of rows into a 'pd.DataFrame' and return it
+        # Clean up all local variables for efficient memory management
+        # del n_rows, data, window_length, stride, i, row_data
+        locals().clear()
+        
+        # Trigger garbage collection for efficient memory management
+        gc.collect()
+
+        # Convert the list of rows into a 'pda.DataFrame' and return it
         return pd.DataFrame( l )
 
     def unique_config(self) -> Tuple[np.ndarray, int]:
@@ -155,6 +165,9 @@ class ColorConfig:
 
         # Calculate the number of unique values found in the DataFrame
         n_unique= unique_values.shape[0]
+
+        # Trigger garbage collection for efficient memory management
+        gc.collect()
 
         # Return both the array of unique values and their count
         return unique_values, n_unique
@@ -211,6 +224,13 @@ class ColorConfig:
                         # Assign fallback color for any missing unique value
                         color_map.update( {each_unique: fallback_color} )
 
+        # Clean up all local variables for efficient memory management
+        # del unique_values, n_unique, cmap, custom_palette, i
+        locals().clear()
+
+        # Trigger garbage collection for efficient memory management
+        gc.collect()
+
         # Return the final color mapping and the specified edge color
         return color_map, edge_color
     
@@ -261,6 +281,13 @@ class ColorConfig:
         # If 'display_hatch' is True and 'h_map' is empty, assign default hatch patterns
         elif display_hatch== True and len(h_map)==0:
             h_map= dict(zip(unique_values, HATCH_PATTERN[:n_unique]))
+
+        # Clean up all local variables for efficient memory management
+        # del HATCH_PATTERN, unique_values, n_unique, display_hatch, each_unique_value, fallback_hatch
+        locals().clear()
+
+        # Trigger garbage collection for efficient memory management
+        gc.collect()
 
         # Return the configured 'h_map'
         return h_map

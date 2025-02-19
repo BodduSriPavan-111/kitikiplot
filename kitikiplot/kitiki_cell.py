@@ -1,11 +1,12 @@
 """
 File Name: kitiki_cell.py
-Description: This file defines the 'KitikiCell' class for each rectangular cell in kitiki plot
+Description: This file defines the 'KitikiCell' class for each rectangular cell in KitikiPlot
 Author: Boddu Sri Pavan
 Date Created: 21-10-2024
-Last Modified: 07-12-2024
+Last Modified: 19-02-2025
 """
 
+# Import necessary libraries
 from typing import List, Dict, Union
 import pandas as pd
 import matplotlib.patches as mpatches
@@ -155,6 +156,11 @@ class KitikiCell(ColorConfig):
 
             # Calculate dimensions for the rectangle based on grid position and size parameters for transposed layout
             rect_dim= (cell_height*(y+1)+ align_factor, window_gap*(self.rows- x+1)+ cell_width*(self.rows- x+1))
+
+
+        # Clean up all local variables for efficient memory management
+        # del align_factor, rect_dim, x, y, cell_width, cell_height, align, window_gap
+        locals().clear() 
 
         # Return a Rectangle object with specified dimensions and styles based on input parameters
         return Rectangle( rect_dim,

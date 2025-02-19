@@ -6,9 +6,9 @@ with open("README.md", "r", encoding="utf-8") as f:
 
 setup(
     name= "kitikiplot",
-    version= "0.1.4",
+    version= "0.1.5",
     author="Boddu Sri Pavan",
-    author_email="boddusripavan111@gmail.com",  # Update with your email
+    author_email="boddusripavan111@gmail.com",
     description="A Python library to visualize categorical sliding window data.",
     long_description=long_description,
     long_description_content_type= "text/markdown",

@@ -1,17 +1,19 @@
 """
-File Name: Kiti.py
-Description: This file defines the 'KitikiPlot' class for generating kitki plot for categorical sequential& time-series data
+File Name: kitikiplot.py
+Description: This file defines the 'KitikiPlot' class to visualize categorical sliding window data
 Author: Boddu Sri Pavan
 Date Created: 21-10-2024
-Last Modified: 23-11-2024
+Last Modified: 19-02-2025
 """
 
+# Import necessary libraries
 from typing import List, Union
 import pandas as pd
 import matplotlib
 import matplotlib.pyplot as plt
 import matplotlib.patches as mpatches
 from .kitiki_cell import KitikiCell
+import gc
 
 class KitikiPlot(KitikiCell):
     """
@@ -90,6 +92,7 @@ class KitikiPlot(KitikiCell):
               display_grid: bool = False,
               display_legend: bool = False,
               legend_hatch: bool = False,
+              return_figure: bool = False,
               legend_kwargs: dict = {},
               kitiki_cell_kwargs: dict = {}
             ) -> None:
@@ -398,6 +401,16 @@ class KitikiPlot(KitikiCell):
             # Pass in the color map, hatch map, and any additional keyword arguments for customization
             self.legend( ax= ax, color_map= self.color_map,hatch_map= self.hatch_map, legend_hatch= legend_hatch, **legend_kwargs  )
 
+        # Clean up all local variables for efficient memory management
+        locals().clear()
+
+        # Trigger garbage collection for efficient memory management
+        gc.collect()
+
+        # Return the figure object if 'return_figure' is set to True
+        if return_figure:
+            return fig
+
         # Show the plot with all configurations applied
         plt.show()
 
@@ -439,7 +452,11 @@ class KitikiPlot(KitikiCell):
             # The hatch pattern is specified based on the 'hatch_map', multiplied by 2 for visibility
             legend_patches= [mpatches.Patch(facecolor= color_map[0][key], label= key, hatch= r"{}".format(hatch_map[key]*2)) for key in color_map[0]]
             
-        kwargs= legend_kwargs
+        # Clean up all local variables for efficient memory management
+        locals().clear()
+
+        # Trigger garbage collection for efficient memory management
+        gc.collect()
 
         # Return the created legend object, attaching the generated patches and any additional kwargs
         return ax.legend(handles=legend_patches, **legend_kwargs)
