@@ -27,4 +27,4 @@ jobs:
       - name: Run Unit Tests
         run: |
           cd kitikiplot
-          pytest Unittest.py
+          pytest unit_test.py
