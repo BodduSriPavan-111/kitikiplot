@@ -1,1 +1,2 @@
-h
+import sys
+sys.path.append('.')
