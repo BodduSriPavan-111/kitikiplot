@@ -94,4 +94,8 @@ BibTeX <br>
 >  url          = {https://doi.org/10.5281/zenodo.14632005},       <br>
 >}
 
+## Executing Tests when contributing to kitikiplot
+
+Please refer <a href="https://github.com/BodduSriPavan-111/kitikiplot/blob/main/tests/unit_test/Readme.md">Readme.md</a> to run the tests
+
 ## Thank You !

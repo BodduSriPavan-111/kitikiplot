@@ -9,8 +9,13 @@ Created On: March 22, 2025
 
 """ Import necessary libraries """
 import pytest
+import sys
 import pandas as pd
 import matplotlib.patches as mpatches
+import numpy as np
+from numpy.testing import assert_array_equal
+
+sys.path.insert(0, '../kitikiplot')
 from kitikiplot import KitikiPlot
 
 """ Fixtures for providing sample data """
@@ -100,22 +105,25 @@ def test_create_invalid_rectangle(kitiki_plot, cmap, hmap):
     """ 
     Tests if the 'create' method raises a KeyError for missing cmap/hmap values. 
     """
-    with pytest.raises(KeyError):  
+    with pytest.raises(KeyError) as exc_info:
         kitiki_plot.create(
             x=0, y=0, each_sample=[10], cell_width=0.5, cell_height=2.0, 
             window_gap=1.0, align=True, cmap=cmap, edge_color='black', 
             fallback_color='white', hmap=hmap, fallback_hatch=' ', 
             display_hatch=True, transpose=False
         )
+    print(f"exc value is equal to {exc_info.value} and type is {type(exc_info.value)}")
+    assert str(10) in str(exc_info.value)
 
 def test_create_rectangle_with_unknown_values(kitiki_plot, cmap, hmap):
     """ 
     Tests if the 'create' method raises a KeyError for unknown cmap/hmap values.
     """
-    with pytest.raises(KeyError):
+    with pytest.raises(KeyError) as exc_info:
         kitiki_plot.create(
             x=0, y=0, each_sample=[99], cell_width=0.5, cell_height=2.0,
             window_gap=1.0, align=True, cmap=cmap, edge_color='black',
             fallback_color='white', hmap=hmap, fallback_hatch=' ',
             display_hatch=True, transpose=False
         )
+    assert str(99) in str(exc_info.value)
