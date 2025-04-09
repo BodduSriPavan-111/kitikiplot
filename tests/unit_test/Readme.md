@@ -48,6 +48,11 @@ To run the Unit tests, navigate to the root directory of the project and run
 ```bash
 pytest -s -vv tests/unit_test/unit_test.py
 ```
+## Running the Unit Tests [Pytests] In CiCd pipeline
+```import sys
+sys.path.append('.')
+```
+### As a Github Hosted Runner is Isolated at evry run .We have used Virtual Env For Python package Management. Pytests are Failed for Custom Packages ,So we can Initialze and run The tests By appending System path of test directory To Root Directory .Pytest will assume the kitikiplot as package and runs tests successfully
 
 ## Contributing
 
