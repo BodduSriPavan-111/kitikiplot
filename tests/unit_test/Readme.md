@@ -52,7 +52,8 @@ pytest -s -vv tests/unit_test/unit_test.py
 ```import sys
 sys.path.append('.')
 ```
-As a Github Hosted Runner is Isolated at evry run .We have used Virtual Env For Python package Management. Pytests are Failed for Custom Packages ,So we can Initialze and run The tests By appending System path of test directory To Root Directory .Pytest will assume the kitikiplot as package and runs tests successfully
+For Persistence and Portability We have added the Tests Directory to System path by appending it to Root Directory. 
+In This way In Cicd Pipeline Pytests Are Performed through Root Folder and Import Kitikiplot Successfully
 
 ## Contributing
 
