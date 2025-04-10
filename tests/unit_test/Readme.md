@@ -48,6 +48,12 @@ To run the Unit tests, navigate to the root directory of the project and run
 ```bash
 pytest -s -vv tests/unit_test/unit_test.py
 ```
+## Running the Unit Tests [Pytests] In CiCd pipeline
+```import sys
+sys.path.append('.')
+```
+For Persistence and Portability We have added the Tests Directory to System path by appending it to Root Directory. 
+In This way In Cicd Pipeline Pytests Are Performed through Root Folder and Import Kitikiplot Successfully
 
 ## Contributing
 
