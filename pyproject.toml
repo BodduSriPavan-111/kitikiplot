@@ -24,4 +24,7 @@ requires = ["poetry-core>=1.0.0"]
 build-backend = "poetry.core.masonry.api"
 
 [tool.poetry.dependencies]
-python = "^3.11"  # You may want to adjust this minimum version requirement
+python = ">=3.11"  # You may want to adjust this minimum version requirement
+numpy== ">=1.26.4"
+pandas== ">=2.2.3"
+matplotlib== ">=3.9.3"
