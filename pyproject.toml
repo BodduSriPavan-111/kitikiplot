@@ -1,0 +1,27 @@
+[tool.poetry]
+name = "kitikiplot"
+version = "0.1.8"
+description = "A Python library to visualize categorical sliding window data."
+authors = ["Boddu Sri Pavan <boddusripavan111@gmail.com>"]
+readme = "README.md"
+repository = "https://github.com/BodduSriPavan-111/kitikiplot"
+documentation = "https://github.com/BodduSriPavan-111/kitikiplot/wiki"
+license = "MIT"
+keywords = ["sliding window", "sequential", "time-series", "genome", "categorical data"]
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+    "Topic :: Scientific/Engineering :: Visualization",
+]
+
+[tool.poetry.urls]
+"Bug Tracker" = "https://github.com/BodduSriPavan-111/kitikiplot/issues"
+"Source Code" = "https://github.com/BodduSriPavan-111/kitikiplot"
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.poetry.dependencies]
+python = "^3.7"  # You may want to adjust this minimum version requirement
