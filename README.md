@@ -57,13 +57,11 @@ ktk.plot( display_legend= True ) # Display the legend
 Check out the complete <b>guide of customization</b> [here](https://github.com/BodduSriPavan-111/kitikiplot/blob/main/examples/Usage_Guide.ipynb).
 
 ## To-do
-- [ ] Streamlit Demo Interface (In Progress: app.py)
+🟢 Streamlit Demo Interface (In Progress) </br>
+🟢 Website for documentation (In Progress)
 - [ ] Tooltip
 - [ ] Interactive Plot
-- [ ] Multithreading to decrease plotting latency
-- [ ] CI/CD Pipeline
 - [ ] Domain-specific modules
-- [ ] Website for documentation
 
 Please refer <a href="https://github.com/BodduSriPavan-111/kitikiplot/blob/main/CONTRIBUTING.md">CONTRIBUTING.md</a> for <b>contributions</b> to kitikiplot.
 
