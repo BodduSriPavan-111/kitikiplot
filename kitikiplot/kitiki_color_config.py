@@ -62,7 +62,7 @@ class ColorConfig:
         
         Parameters
         ----------
-        data : pd.DataFrame or list
+        data : pd.DataFrame or list or str
             - The input data to be processed.
         stride : int (optional)
             - The number of elements to move the window after each iteration when converting a list to a DataFrame. 
@@ -78,23 +78,29 @@ class ColorConfig:
             - Default is 1.
         """
 
-        # Check if 'data' is of type 'pd.DataFrame' and initialize 'data' attribute.
+        # Check if 'data' is of type 'pd.DataFrame' and initialize 'data' attribute
         if isinstance( data, pd.DataFrame):
             self.data= data
 
-        # Check if 'data' is of type 'list'.
+        # Check if 'data' is of type 'list'
         elif isinstance( data, list):
 
-            # Convert 'list' to 'pd.DataFrame' using stride and window_length, and initialize 'data' attribute.
+            # Convert 'list' to 'pd.DataFrame' using stride and window_length, and initialize 'data' attribute
             self.data= self._convert_list_to_dataframe( data, stride, window_length)
+
+        # Check if 'data' is of type 'str'
+        elif isinstance( data, str):
+
+            # Convert 'list' to 'pd.DataFrame' using stride and window_length, and initialize 'data' attribute
+            self.data= self._convert_list_to_dataframe( list(data), stride, window_length)
 
         # Store the stride value
         self.stride= stride
 
-        # Set 'rows' to number of rows in the DataFrame.
+        # Set 'rows' to number of rows in the DataFrame
         self.rows= self.data.shape[0]
 
-        # Set 'cols' to number of columns in the DataFrame.
+        # Set 'cols' to number of columns in the DataFrame
         self.cols= self.data.shape[1]
 
     @staticmethod
