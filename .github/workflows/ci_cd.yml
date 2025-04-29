@@ -25,7 +25,11 @@ jobs:
         run: |
           poetry config virtualenvs.create true
           poetry config virtualenvs.in-project true
-
+          
+      - name: Update Poetry Lock File
+        run: |
+          poetry lock
+          
       - name: Install Dependencies
         run: |
           poetry install
