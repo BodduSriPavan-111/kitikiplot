@@ -3,7 +3,7 @@ File Name: kitiki_cell.py
 Description: This file defines the 'KitikiCell' class for each rectangular cell in KitikiPlot
 Author: Boddu Sri Pavan
 Date Created: 21-10-2024
-Last Modified: 19-02-2025
+Last Modified: 29-04-2025
 """
 
 # Import necessary libraries
@@ -22,8 +22,8 @@ class KitikiCell(ColorConfig):
 
     Parameters
     ----------
-    data : pd.DataFrame or list
-        - The input data which can be either a 'pd.DataFrame' or a 'list'.
+    data : pd.DataFrame or list or str
+        - The input data which can be either a 'pd.DataFrame' or a 'list' or a 'str'.
         - If a list is provided, it will be converted into a DataFrame using specified stride and window length.
     stride : int (optional)
         - The number of elements to move the window after each iteration when converting a list to a DataFrame. 
@@ -39,13 +39,13 @@ class KitikiCell(ColorConfig):
         - Default is 1.
     """
     
-    def __init__(self, data: Union[pd.DataFrame, list], stride: int = 1, window_length: int = 10) -> None:
+    def __init__(self, data: Union[pd.DataFrame, list, str], stride: int = 1, window_length: int = 10) -> None:
         """
         Initialize the KitikiCell object by inheriting from ColorConfig.
 
         Parameters
         ----------
-        data : pd.DataFrame or list
+        data : pd.DataFrame or list or str
             - The input data to be processed.
         stride : int (optional)
             - The number of elements to move the window after each iteration when converting a list to a DataFrame. 

@@ -1,6 +1,9 @@
 import sys
 import os
 import io
+from io import StringIO
+
+from Bio import SeqIO
 
 sys.path.append(os.path.abspath(os.path.join(os.getcwd(), '..')))
 
@@ -23,7 +26,12 @@ import streamlit as st
 
 st.title( body= ":blue[Streamlit]")
 
-data= st.text_input( label= "Genome", key= "data", placeholder= "Ex: AATTTTCGT")
+# data= st.text_input( label= "Genome", key= "data", placeholder= "Ex: AATTTTCGT")
+uploaded_file= st.file_uploader("Upload a file (Format: .fasta)")
+
+if uploaded_file is not None:
+    data= str(list( SeqIO.parse(StringIO(uploaded_file.getvalue().decode("utf-8")), "fasta") )[0].seq)
+    st.write( data )
 
 col1, col2= st.columns(2)
 
