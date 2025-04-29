@@ -3,7 +3,7 @@ File Name: kitiki_color_config.py
 Description: This file defines the 'ColorConfig' class for managing input data(list, dataframe) and configuring color, hatch of KitikiPlot
 Author: Boddu Sri Pavan
 Date Created: 21-10-2024
-Last Modified: 19-02-2025
+Last Modified: 29-04-2025
 """
 
 # Import necessary libraries
@@ -22,8 +22,8 @@ class ColorConfig:
 
     Parameters
     ----------
-    data : pd.DataFrame or list
-        - The input data which can be either a pandas DataFrame or a list.
+    data : pd.DataFrame or list or str
+        - The input data which can be either a pandas DataFrame or a list or a str.
         - If a list is provided, it will be converted into a DataFrame using specified stride and window length.
     stride : int (optional)
         - The number of elements to move the window after each iteration when converting a list to a DataFrame. 
@@ -55,14 +55,14 @@ class ColorConfig:
         - _convert_list_to_dataframe: Convert a list into a pandas DataFrame using sliding window.
     """
 
-    def __init__(self, data: Union[pd.DataFrame, list], stride: int = 1, window_length: int = 10) -> None:
+    def __init__(self, data: Union[pd.DataFrame, list, str], stride: int = 1, window_length: int = 10) -> None:
         """
         Initialize the ColorConfig object with data and optional parameters.
         Also checks the type of input data and initializes the corresponding attributes.
         
         Parameters
         ----------
-        data : pd.DataFrame or list
+        data : pd.DataFrame or list or str
             - The input data to be processed.
         stride : int (optional)
             - The number of elements to move the window after each iteration when converting a list to a DataFrame. 
@@ -87,6 +87,11 @@ class ColorConfig:
 
             # Convert 'list' to 'pd.DataFrame' using stride and window_length, and initialize 'data' attribute.
             self.data= self._convert_list_to_dataframe( data, stride, window_length)
+
+        elif isinstance( data, str):
+
+            # Convert 'list' to 'pd.DataFrame' using stride and window_length, and initialize 'data' attribute.
+            self.data= self._convert_list_to_dataframe( list(data), stride, window_length)
 
         # Store the stride value
         self.stride= stride

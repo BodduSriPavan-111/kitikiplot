@@ -3,7 +3,7 @@ File Name: kitikiplot.py
 Description: This file defines the 'KitikiPlot' class to visualize categorical sliding window data
 Author: Boddu Sri Pavan
 Date Created: 21-10-2024
-Last Modified: 19-02-2025
+Last Modified: 29-04-2025
 """
 
 # Import necessary libraries
@@ -25,7 +25,7 @@ class KitikiPlot(KitikiCell):
 
     Parameters
     ----------
-    data : pd.DataFrame or list
+    data : pd.DataFrame or list or str
         - The input data to be processed.
     stride : int (optional)
         - The number of elements to move the window after each iteration when converting a list to a DataFrame. 
@@ -41,13 +41,13 @@ class KitikiPlot(KitikiCell):
         - Default is 1.
     """
      
-    def __init__(self, data: Union[pd.DataFrame, List], stride: int = 1, window_length: int = 10) -> None:
+    def __init__(self, data: Union[pd.DataFrame, List, str], stride: int = 1, window_length: int = 10) -> None:
         """
         Initialize the KitikiPlot object by inheriting from KitikiCell.
 
         Parameters
         ----------
-        data : pd.DataFrame or list
+        data : pd.DataFrame or list or str
             - The input data to be processed.
         stride : int (optional)
             - The number of elements to move the window after each iteration when converting a list to a DataFrame. 
