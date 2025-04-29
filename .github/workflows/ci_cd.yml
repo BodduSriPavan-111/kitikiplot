@@ -8,31 +8,32 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v4
 
-      - name: Create Virtual Environment
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.11'
+
+      - name: Install Poetry
         run: |
-          python3 -m venv venv
-          source venv/bin/activate
+          pip install poetry
+
+      - name: Configure Poetry
+        run: |
+          poetry config virtualenvs.create true
+          poetry config virtualenvs.in-project true
 
       - name: Install Dependencies
         run: |
-          sudo apt update
-          source venv/bin/activate
-          sudo apt install -y python3 python3-pip 
-          pip install pytest
+          poetry install
 
-
-      - name: Install Required Python Packages
+      - name: Install Pytest
         run: |
-          source venv/bin/activate
-          pip install -r requirements.txt
+          poetry add pytest --group test
 
       - name: Run Unit Tests
         run: |
-          source venv/bin/activate
-          cd  tests/unit_test
-          pytest unit_test.py
+          poetry run pytest tests/unit_test/unit_test.py
