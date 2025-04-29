@@ -25,4 +25,3 @@ build-backend = "poetry.core.masonry.api"
 
 [tool.poetry.dependencies]
 python = ">=3.11"  # You may want to adjust this minimum version requirement
-bio = "^1.7.1"
