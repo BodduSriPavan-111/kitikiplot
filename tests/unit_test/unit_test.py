@@ -16,7 +16,7 @@ import numpy as np
 from numpy.testing import assert_array_equal
 
 sys.path.insert(0, '../kitikiplot')
-from kitikiplot import KitikiPlot
+from kitikiplot.core import KitikiPlot
 
 """ Fixtures for providing sample data """
 
