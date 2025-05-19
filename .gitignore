@@ -5,7 +5,6 @@ __pycache__/
 
 # Distribution / packaging
 .lock
-build/
 dist/
 *.egg-info/
 *.egg
