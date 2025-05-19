@@ -2,8 +2,8 @@
 
 <div align="center">
 
-![PyPI](https://img.shields.io/pypi/v/kitikiplot?color=blueviolet)
-![PyPI - Downloads](https://img.shields.io/pypi/dm/kitikiplot?color=gold)
+[![PyPI Downloads](https://static.pepy.tech/badge/kitikiplot)](https://pepy.tech/projects/kitikiplot)
+![PyPI](https://img.shields.io/pypi/v/kitikiplot?color=gold)
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.14632005.svg)](https://doi.org/10.5281/zenodo.14632005)
 ![License](https://img.shields.io/github/license/BodduSriPavan-111/kitikiplot?color=green)
 

@@ -25,7 +25,11 @@ jobs:
         run: |
           poetry config virtualenvs.create true
           poetry config virtualenvs.in-project true
-
+          
+      - name: Activate Poetry Environment
+        run: |
+          poetry env activate
+          
       - name: Install Dependencies
         run: |
           poetry install
