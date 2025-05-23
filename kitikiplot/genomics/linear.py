@@ -3,12 +3,10 @@ File Name: linear.py
 Description: This file defines linear genomic plot
 Author: Boddu Sri Pavan
 Date Created: 21-05-2025
-Last Modified: 21-05-2025
+Last Modified: 22-05-2025
 """
 
 from kitikiplot.core import KitikiPlot
-
-from Bio import SeqIO
 
 def plot( nucleotide_sequence: str )->  bool:
     """
