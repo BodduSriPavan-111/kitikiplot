@@ -47,6 +47,7 @@ def plot( nucleotide_sequence: str, window_length= 30, cell_width= 2 ):
                 ylabel= "Nucleotide Chunk",
                 display_xticks= False,
                 display_yticks= False,
+                title= "Grid Plot: Nucleotide Sequence Visualization",
                 display_legend= True,
                 legend_kwargs= {"bbox_to_anchor": (1.01, 1), "loc":'upper left', "borderaxespad": 0.},
                 kitiki_cell_kwargs= {"linewidth": 0.5}
