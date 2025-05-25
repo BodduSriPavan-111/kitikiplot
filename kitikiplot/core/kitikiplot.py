@@ -245,7 +245,6 @@ class KitikiPlot(KitikiCell):
             # This allows for plotting only a subset of the data based on the user-defined range
             window_range= range( window_range[0], window_range[1])
 
-        print("________________________", focus)
         # Generate cells for each sample in the specified window range and time frame columns
         for index in window_range:
 
