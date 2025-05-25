@@ -77,6 +77,8 @@ class KitikiPlot(KitikiCell):
               hmap: dict = {},
               fallback_hatch: str = " ",
               display_hatch: bool = False,
+              focus: Union[tuple, list] = None,
+              focus_alpha: float = 0.25,
               transpose: bool = False,
               xlabel: str = "Sliding Windows", 
               ylabel: str = "Frames", 
@@ -143,6 +145,13 @@ class KitikiPlot(KitikiCell):
         display_hatch : bool
             - A flag indicating whether to display hatch patterns on cells.
             - Default is False.
+        focus : tuple or list
+            - Index range to set focus/ highlight
+            - If focus is (i, j) then index values: i, i+1, i+2, ... j-1 are highlighted (0% transparent)
+            - Default is None
+        focus_alpha : float
+            - Transparency value to de-emphasize indices falling out of 'focus'
+            - Default is 0.25
         transpose : bool (optional)
             - A flag indicating whether to transpose the KitikiPlot. 
             - Default is False.
@@ -236,12 +245,15 @@ class KitikiPlot(KitikiCell):
             # This allows for plotting only a subset of the data based on the user-defined range
             window_range= range( window_range[0], window_range[1])
 
+        print("________________________", focus)
         # Generate cells for each sample in the specified window range and time frame columns
         for index in window_range:
 
             each_sample= data[ index ]
 
             for time_frame in range(self.cols):
+
+                kitiki_cell_kwargs["alpha"]= focus_alpha if focus != None and ( time_frame< focus[0] or time_frame>= focus[1] ) else 1
 
                 # Create each cell using specified parameters and add it to patches list 
                 cell_gen= self.create(  x= index,
