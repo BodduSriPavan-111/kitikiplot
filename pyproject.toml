@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "kitikiplot"
-version = "0.2.3"
+version = "0.2.5"
 description = "A Python library to visualize categorical sliding window data."
 authors = ["Boddu Sri Pavan <boddusripavan111@gmail.com>"]
 readme = "README.md"
