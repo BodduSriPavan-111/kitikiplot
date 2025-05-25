@@ -37,7 +37,7 @@ def plot( nucleotide_sequence: str, window_length= 30, cell_width= 2 ):
 
     ktk= KitikiPlot( data= grid_df, stride= 0 )
 
-    ktk.plot(
+    fig= ktk.plot(
                 figsize= (grid_df.shape[1]//3, grid_df.shape[0]//3),
                 cell_width= cell_width,
                 cmap= {'A': '#007FFF', 'T': "#fffc00", "G": "#00ff00", "C": "#960018"},
@@ -50,5 +50,8 @@ def plot( nucleotide_sequence: str, window_length= 30, cell_width= 2 ):
                 title= "Grid Plot: Nucleotide Sequence Visualization",
                 display_legend= True,
                 legend_kwargs= {"bbox_to_anchor": (1.01, 1), "loc":'upper left', "borderaxespad": 0.},
+                return_figure= True,
                 kitiki_cell_kwargs= {"linewidth": 0.5}
             )
+    
+    return fig

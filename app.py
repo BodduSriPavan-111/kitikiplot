@@ -7,7 +7,7 @@ from Bio import SeqIO
 
 sys.path.append(os.path.abspath(os.path.join(os.getcwd(), '..')))
 
-from kitikiplot import KitikiPlot
+from kitikiplot.core import KitikiPlot
 import streamlit as st
 
 # m = st.markdown("""
