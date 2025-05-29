@@ -13,7 +13,7 @@
 KitikiPlot is a Python library for visualizing sequential and time-series categorical "Sliding Window" data. <br>
 (The term 'kitiki' means 'window' in Telugu)
 
-Genome Grid Plot Generator: <a href= "https://huggingface.co/spaces/BodduSriPavan111/genomics">🤗 HuggingFace Demo</a>
+Genome Grid Plot Generator: 🤗 <a href= "https://huggingface.co/spaces/BodduSriPavan111/genomics">HuggingFace Demo</a>
 
 <!--
 ## Table of Contents</h2>
