@@ -8,7 +8,7 @@ Last Modified: 25-05-2025
 
 from kitikiplot.core import KitikiPlot
 
-def plot( data, focus, focus_alpha, xlabel, ylabel, xticks_values, ytick_prefix, cmap ):
+def plot( data, focus, focus_alpha, xlabel, ylabel, xticks_values, ytick_prefix, cmap= {} ):
 
     ktk= KitikiPlot( data= data, stride= 1, window_length= len(data) )
 

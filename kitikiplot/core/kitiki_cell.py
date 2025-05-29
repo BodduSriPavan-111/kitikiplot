@@ -79,6 +79,8 @@ class KitikiCell(ColorConfig):
                 fallback_hatch: str,
                 display_hatch: bool,
                 transpose: bool,
+                focus,
+                focus_alpha,
                 **kitiki_cell_kwargs: dict) -> mpatches.Rectangle:
         
         """
@@ -142,8 +144,28 @@ class KitikiCell(ColorConfig):
             # Calculate alignment factor based on whether alignment is enabled
             align_factor= (self.rows-x)*self.stride*cell_height if align else 0
 
-            # Calculate dimensions for the rectangle based on grid position and size parameters
-            rect_dim= (window_gap*(x+1)+ cell_width*(x+1) , cell_height*(self.cols-y-1)+align_factor)
+            dim_x= window_gap*(x+1)+ cell_width*(x+1)
+            dim_y= cell_height*(self.cols-y-1)+align_factor
+
+            if focus == None:
+                
+                # Calculate dimensions for the rectangle based on grid position and size parameters
+                rect_dim= ( dim_x, dim_y )
+
+            else:
+
+                align_factor= (self.rows)*self.stride*cell_height
+                focus_dim_y= cell_height*(self.cols-y-1)+align_factor
+
+                # Calculate dimensions for the rectangle based on grid position and size parameters
+                rect_dim= ( dim_x, focus_dim_y )
+
+                max_y= cell_height*(self.cols-1)+ ((self.rows)*self.stride*cell_height)
+
+                if (focus_dim_y >= max_y - (cell_height*self.window_length + cell_height*x*self.stride)) and  (focus_dim_y < max_y - (cell_height*x*self.stride)):
+                    kitiki_cell_kwargs["alpha"]= 1
+                else:
+                    kitiki_cell_kwargs["alpha"]= focus_alpha
 
         # Adjust dimensions if 'transpose' is set to 'True'
         else:
@@ -154,8 +176,11 @@ class KitikiCell(ColorConfig):
             # Calculate alignment factor for transposed configuration based on whether alignment is enabled
             align_factor= x*self.stride*cell_height if align else 0
 
+            dim_x= cell_height*(y+1)+ align_factor
+            dim_y= window_gap*(self.rows- x+1)+ cell_width*(self.rows- x+1)
             # Calculate dimensions for the rectangle based on grid position and size parameters for transposed layout
-            rect_dim= (cell_height*(y+1)+ align_factor, window_gap*(self.rows- x+1)+ cell_width*(self.rows- x+1))
+            rect_dim= (dim_x, dim_y)
+                
 
 
         # Clean up all local variables for efficient memory management

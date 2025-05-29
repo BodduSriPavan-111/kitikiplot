@@ -94,14 +94,10 @@ class ColorConfig:
             # Convert 'list' to 'pd.DataFrame' using stride and window_length, and initialize 'data' attribute
             self.data= self._convert_list_to_dataframe( list(data), stride, window_length)
 
-        # Store the stride value
-        self.stride= stride
-
-        # Set 'rows' to number of rows in the DataFrame
         self.rows= self.data.shape[0]
-
-        # Set 'cols' to number of columns in the DataFrame
         self.cols= self.data.shape[1]
+        self.stride= stride
+        self.window_length= window_length
 
     @staticmethod
     def _convert_list_to_dataframe( data: Union[pd.DataFrame, list], stride: int = 1, window_length: int = 10) -> pd.DataFrame:

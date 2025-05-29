@@ -8,6 +8,7 @@ Last Modified: 19-02-2025
 
 # Import necessary libraries
 from typing import List, Union
+import numpy as np
 import pandas as pd
 import matplotlib
 import matplotlib.pyplot as plt
@@ -245,15 +246,24 @@ class KitikiPlot(KitikiCell):
             # This allows for plotting only a subset of the data based on the user-defined range
             window_range= range( window_range[0], window_range[1])
 
+        if focus != None:
+            col_range= self.rows + self.window_length - 1
+            print( "COLUMN Range: ", col_range )
+        else:
+            col_range= self.cols
+
+        each_sample= np.concatenate( (data[0], data[1:data.shape[0], (-1)*self.stride:].flatten()) )
+
         # Generate cells for each sample in the specified window range and time frame columns
         for index in window_range:
 
-            each_sample= data[ index ]
+            if focus == None:
+                each_sample= data[ index ]
 
-            for time_frame in range(self.cols):
+            for time_frame in range( col_range ):
 
                 kitiki_cell_kwargs["alpha"]= focus_alpha if focus != None and ( time_frame< focus[0] or time_frame>= focus[1] ) else 1
-
+                
                 # Create each cell using specified parameters and add it to patches list 
                 cell_gen= self.create(  x= index,
                                         y= time_frame,
@@ -269,6 +279,8 @@ class KitikiPlot(KitikiCell):
                                         fallback_hatch= fallback_hatch,
                                         display_hatch= display_hatch,
                                         transpose= transpose,
+                                        focus= focus,
+                                        focus_alpha= focus_alpha,
                                         **kitiki_cell_kwargs
                                     )
                 patches.append( cell_gen )
