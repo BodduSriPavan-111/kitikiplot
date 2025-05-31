@@ -162,7 +162,7 @@ class KitikiCell(ColorConfig):
 
                 max_y= cell_height*(self.cols-1)+ ((self.rows)*self.stride*cell_height)
 
-                if (focus_dim_y >= max_y - (cell_height*self.window_length + cell_height*x*self.stride)) and  (focus_dim_y < max_y - (cell_height*x*self.stride)):
+                if (focus_dim_y > max_y - (cell_height*self.window_length + cell_height*x*self.stride)) and  (focus_dim_y <= max_y - (cell_height*x*self.stride)):
                     kitiki_cell_kwargs["alpha"]= 1
                 else:
                     kitiki_cell_kwargs["alpha"]= focus_alpha
