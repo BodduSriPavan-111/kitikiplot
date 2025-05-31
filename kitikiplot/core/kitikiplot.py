@@ -303,7 +303,7 @@ class KitikiPlot(KitikiCell):
             
             # y_positions= [(self.rows+ self.cols- self.stride- i)*cell_height+cell_height/2 for i in range(self.stride*self.rows+self.cols)]
             
-            y_positions= [cell_height*(self.cols-i-1)+ self.rows*self.stride*cell_height + cell_height/2  for i in range(self.stride*self.rows+self.cols)]
+            y_positions= [cell_height*(self.cols-i-1)+ self.rows*self.stride*cell_height + cell_height/2  for i in range(col_range)]
 
             # Display xticks if 'display_xticks' is True
             if display_xticks:
@@ -344,7 +344,7 @@ class KitikiPlot(KitikiCell):
                     
                     print(y_positions)
                     # Set y-ticks with appropriate labels and rotation
-                    plt.yticks( y_positions, [ytick_prefix+"_"+str(i) for i in range(self.stride*self.rows+self.cols)], rotation= yticks_rotation)
+                    plt.yticks( y_positions, [ytick_prefix+"_"+str(i) for i in range(col_range)], rotation= yticks_rotation)
             
             # Else turn off the yticks
             else:
