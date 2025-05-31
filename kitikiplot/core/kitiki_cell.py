@@ -150,7 +150,6 @@ class KitikiCell(ColorConfig):
 
             if focus == None:   
                 rect_dim= ( dim_x, dim_y )
-                print( x, y, dim_x, dim_y )
 
             else:
 

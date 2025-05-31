@@ -253,12 +253,6 @@ class KitikiPlot(KitikiCell):
         else:
             col_range= self.cols
 
-
-        print("Total Data: ", each_sample)
-        print( "Window Range: ", window_range)
-        print( "COlumns Range: ", col_range)
-        print( "Each sample length: ", each_sample.shape[0] )
-
         # Generate cells for each sample in the specified window range and time frame columns
         for index in window_range:
 
@@ -342,7 +336,6 @@ class KitikiPlot(KitikiCell):
                 # Configure default yticks
                 else:
                     
-                    print(y_positions)
                     # Set y-ticks with appropriate labels and rotation
                     plt.yticks( y_positions, [ytick_prefix+"_"+str(i) for i in range(col_range)], rotation= yticks_rotation)
             
