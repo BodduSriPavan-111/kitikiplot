@@ -3,7 +3,7 @@ File Name: kitiki_cell.py
 Description: This file defines the 'KitikiCell' class for each rectangular cell in KitikiPlot
 Author: Boddu Sri Pavan
 Date Created: 21-10-2024
-Last Modified: 19-02-2025
+Last Modified: 31-05-2025
 """
 
 # Import necessary libraries
@@ -144,12 +144,11 @@ class KitikiCell(ColorConfig):
             # Calculate alignment factor based on whether alignment is enabled
             align_factor= (self.rows-x)*self.stride*cell_height if align else 0
 
+            # Calculate dimensions for the rectangle based on grid position and size parameters
             dim_x= window_gap*(x+1)+ cell_width*(x+1)
             dim_y= cell_height*(self.cols-y-1)+align_factor
 
-            if focus == None:
-                
-                # Calculate dimensions for the rectangle based on grid position and size parameters
+            if focus == None:   
                 rect_dim= ( dim_x, dim_y )
 
             else:
@@ -176,11 +175,11 @@ class KitikiCell(ColorConfig):
             # Calculate alignment factor for transposed configuration based on whether alignment is enabled
             align_factor= x*self.stride*cell_height if align else 0
 
+            # Calculate dimensions for the rectangle based on grid position and size parameters for transposed layout
             dim_x= cell_height*(y+1)+ align_factor
             dim_y= window_gap*(self.rows- x+1)+ cell_width*(self.rows- x+1)
-            # Calculate dimensions for the rectangle based on grid position and size parameters for transposed layout
+
             rect_dim= (dim_x, dim_y)
-                
 
 
         # Clean up all local variables for efficient memory management
