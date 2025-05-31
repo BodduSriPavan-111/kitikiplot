@@ -246,12 +246,18 @@ class KitikiPlot(KitikiCell):
             # This allows for plotting only a subset of the data based on the user-defined range
             window_range= range( window_range[0], window_range[1])
 
+        each_sample= np.concatenate( (data[0], data[1:data.shape[0], (-1)*self.stride:].flatten()) )
+
         if focus != None:
-            col_range= self.rows + self.window_length - 1
+            col_range= (self.rows * self.stride) + self.window_length - self.stride
         else:
             col_range= self.cols
 
-        each_sample= np.concatenate( (data[0], data[1:data.shape[0], (-1)*self.stride:].flatten()) )
+
+        print("Total Data: ", each_sample)
+        print( "Window Range: ", window_range)
+        print( "COlumns Range: ", col_range)
+        print( "Each sample length: ", each_sample.shape[0] )
 
         # Generate cells for each sample in the specified window range and time frame columns
         for index in window_range:
