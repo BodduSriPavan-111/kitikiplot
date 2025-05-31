@@ -180,6 +180,18 @@ class KitikiCell(ColorConfig):
             dim_y= window_gap*(self.rows- x+1)+ cell_width*(self.rows- x+1)
 
             rect_dim= (dim_x, dim_y)
+    
+            if focus != None:
+               
+                align_factor= x*self.stride*cell_height
+
+                min_dim_x= cell_height + align_factor
+                max_dim_x= cell_height*(self.cols)+ align_factor
+
+                if (min_dim_x <= dim_x) and (dim_x <= max_dim_x):
+                    kitiki_cell_kwargs["alpha"]= 1
+                else:
+                    kitiki_cell_kwargs["alpha"]= focus_alpha
 
 
         # Clean up all local variables for efficient memory management

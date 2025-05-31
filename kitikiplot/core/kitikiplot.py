@@ -248,7 +248,6 @@ class KitikiPlot(KitikiCell):
 
         if focus != None:
             col_range= self.rows + self.window_length - 1
-            print( "COLUMN Range: ", col_range )
         else:
             col_range= self.cols
 
@@ -261,8 +260,10 @@ class KitikiPlot(KitikiCell):
                 each_sample= data[ index ]
 
             for time_frame in range( col_range ):
+                
+                if type(focus) != bool:
 
-                kitiki_cell_kwargs["alpha"]= focus_alpha if focus != None and ( time_frame< focus[0] or time_frame>= focus[1] ) else 1
+                    kitiki_cell_kwargs["alpha"]= focus_alpha if focus != None and ( time_frame< focus[0] or time_frame>= focus[1] ) else 1
                 
                 # Create each cell using specified parameters and add it to patches list 
                 cell_gen= self.create(  x= index,
