@@ -22,7 +22,11 @@ def plot(
             legend_kwargs= {"bbox_to_anchor": (1.01, 1), "loc":'upper left', "borderaxespad": 0.},
             cmap= {} 
         ):
-
+    """
+    Linear Plot for ecological data.
+    Focus can be set to highlight particular time-interval
+    """
+    
     ktk= KitikiPlot( data= data, stride= stride, window_length= len(data) )
 
     ktk.plot(

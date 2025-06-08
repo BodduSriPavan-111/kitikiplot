@@ -138,8 +138,6 @@ class KitikiCell(ColorConfig):
         matplotlib.patches.Rectangle: A Rectangle object representing the configured cell for KitikiPlot visualization.
         """
 
-        print("_______", kitiki_cell_kwargs, end= "========")
-
         # Adjust dimensions if 'transpose' is set to 'False'
         if not transpose:
 
@@ -203,8 +201,6 @@ class KitikiCell(ColorConfig):
         # Clean up all local variables for efficient memory management
         # del align_factor, rect_dim, x, y, cell_width, cell_height, align, window_gap
         locals().clear() 
-
-        print("_______", kitiki_cell_kwargs)
 
         # Return a Rectangle object with specified dimensions and styles based on input parameters
         return Rectangle( rect_dim,

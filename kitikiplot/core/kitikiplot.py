@@ -266,7 +266,6 @@ class KitikiPlot(KitikiCell):
                 
                 if type(focus) != bool:
                     
-                    print("coming")
                     kitiki_cell_kwargs["alpha"]= focus_alpha if focus != None and ( time_frame< focus[0] or time_frame>= focus[1] ) else 1
 
                 # Create each cell using specified parameters and add it to patches list 
