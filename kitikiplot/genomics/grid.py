@@ -12,7 +12,7 @@ import pandas as pd
 
 def plot( nucleotide_sequence: str, window_length= 30, cell_width= 2 ):
     """
-    Generates linear genomic plot for short genome sequences.
+    Generates grid genomic plot for short genome sequences.
 
     Parameters
     ----------
