@@ -138,6 +138,8 @@ class KitikiCell(ColorConfig):
         matplotlib.patches.Rectangle: A Rectangle object representing the configured cell for KitikiPlot visualization.
         """
 
+        print("_______", kitiki_cell_kwargs, end= "========")
+
         # Adjust dimensions if 'transpose' is set to 'False'
         if not transpose:
 
@@ -161,10 +163,12 @@ class KitikiCell(ColorConfig):
 
                 max_y= cell_height*(self.cols-1)+ ((self.rows)*self.stride*cell_height)
 
-                if (focus_dim_y > max_y - (cell_height*self.window_length + cell_height*x*self.stride)) and  (focus_dim_y <= max_y - (cell_height*x*self.stride)):
-                    kitiki_cell_kwargs["alpha"]= 1
-                else:
-                    kitiki_cell_kwargs["alpha"]= focus_alpha
+                if kitiki_cell_kwargs.get("alpha", None) == None:
+
+                    if (focus_dim_y > max_y - (cell_height*self.window_length + cell_height*x*self.stride)) and  (focus_dim_y <= max_y - (cell_height*x*self.stride)):
+                        kitiki_cell_kwargs["alpha"]= 1
+                    else:
+                        kitiki_cell_kwargs["alpha"]= focus_alpha
 
         # Adjust dimensions if 'transpose' is set to 'True'
         else:
@@ -188,15 +192,19 @@ class KitikiCell(ColorConfig):
                 min_dim_x= cell_height + align_factor
                 max_dim_x= cell_height*(self.cols)+ align_factor
 
-                if (min_dim_x <= dim_x) and (dim_x <= max_dim_x):
-                    kitiki_cell_kwargs["alpha"]= 1
-                else:
-                    kitiki_cell_kwargs["alpha"]= focus_alpha
+                if  kitiki_cell_kwargs.get("alpha", None) == None:
+
+                    if (min_dim_x <= dim_x) and (dim_x <= max_dim_x):
+                        kitiki_cell_kwargs["alpha"]= 1
+                    else:
+                        kitiki_cell_kwargs["alpha"]= focus_alpha
 
 
         # Clean up all local variables for efficient memory management
         # del align_factor, rect_dim, x, y, cell_width, cell_height, align, window_gap
         locals().clear() 
+
+        print("_______", kitiki_cell_kwargs)
 
         # Return a Rectangle object with specified dimensions and styles based on input parameters
         return Rectangle( rect_dim,

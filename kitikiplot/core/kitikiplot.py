@@ -198,6 +198,9 @@ class KitikiPlot(KitikiCell):
         legend_hatch : bool (optional)
             - A flag indicating whether to include hatch patterns in the legend. 
             - Default is False.
+        return_figure: bool (optional) 
+            - A flag indicating whether to return plot.
+            - Default is False.
         legend_kwargs : dict (optional)
             - Additional keyword arguments passed to customize the legend.
             - Default is {}.
@@ -262,9 +265,10 @@ class KitikiPlot(KitikiCell):
             for time_frame in range( col_range ):
                 
                 if type(focus) != bool:
-
+                    
+                    print("coming")
                     kitiki_cell_kwargs["alpha"]= focus_alpha if focus != None and ( time_frame< focus[0] or time_frame>= focus[1] ) else 1
-                
+
                 # Create each cell using specified parameters and add it to patches list 
                 cell_gen= self.create(  x= index,
                                         y= time_frame,
