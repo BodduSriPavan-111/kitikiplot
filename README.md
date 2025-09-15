@@ -55,11 +55,11 @@ ktk.plot( display_legend= True ) # Display the legend
 Check out the complete <b>guide of customization</b> [here](https://github.com/BodduSriPavan-111/kitikiplot/blob/main/examples/Usage_Guide.ipynb).
 
 ## To-do
-🟢 Domain-specific modules (In Progress) </br>
-🟢 Streamlit Demo Interface (In Progress) </br>
-🟢 Website for documentation (In Progress)
 - [ ] Tooltip
-- [ ] Interactive Plot
+- [ ] Interactive Plot </br>
+- [x] Domain-specific modules (In Progress) </br>
+- [x] Streamlit Demo Interface (In Progress) </br>
+- [x] Website for documentation (In Progress)
 
 Please refer <a href="https://github.com/BodduSriPavan-111/kitikiplot/blob/main/CONTRIBUTING.md">CONTRIBUTING.md</a> for <b>contributions</b> to kitikiplot.
 
