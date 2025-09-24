@@ -5,7 +5,7 @@
 - **Fork** the repository to your GitHub account.
 - **Clone** your forked repository to your local machine:
   ```javascript
-  git clone https://github.com/your-username/kitikiplot.git
+  git clone https://github.com/BodduSriPavan-111/kitikiplot.git
   ```
 - **Create** a new branch:
 ```javascript
