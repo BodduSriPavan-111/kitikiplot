@@ -57,11 +57,15 @@ Check out the complete <b>guide of customization</b> [here](https://github.com/B
 ## To-do
 - [ ] Tooltip
 - [ ] Interactive Plot </br>
-- [x] Domain-specific modules (In Progress) </br>
-- [x] Streamlit Demo Interface (In Progress) </br>
-- [x] Website for documentation (In Progress)
+- [x] Domain-specific modules </br>
+- [x] Streamlit Demo Interface </br>
+- [x] Website for documentation
 
-Please refer <a href="https://github.com/BodduSriPavan-111/kitikiplot/blob/main/CONTRIBUTING.md">CONTRIBUTING.md</a> for <b>contributions</b> to kitikiplot.
+## Want to contribute?
+
+- Please refer <a href="https://github.com/BodduSriPavan-111/kitikiplot/blob/main/CONTRIBUTING.md">CONTRIBUTING.md</a> for <b>contributions</b> to kitikiplot.
+- Execute Tests when contributing to KitikiPlot
+- Please refer <a href="https://github.com/BodduSriPavan-111/kitikiplot/blob/main/tests/unit_test/Readme.md">Readme.md</a> to run the tests
 
 To join the Discord server for more discussion, click <a href="https://discord.gg/PQKtqm5p">here</a>
 
@@ -94,9 +98,5 @@ BibTeX <br>
 >  doi          = {10.5281/zenodo.14632005},       <br>
 >  url          = {https://doi.org/10.5281/zenodo.14632005},       <br>
 >}
-
-## Execute Tests when contributing to KitikiPlot
-
-Please refer <a href="https://github.com/BodduSriPavan-111/kitikiplot/blob/main/tests/unit_test/Readme.md">Readme.md</a> to run the tests
 
 ## Thank You !
