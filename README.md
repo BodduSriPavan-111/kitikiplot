@@ -1,3 +1,6 @@
+# News
+The KitikiPlot Python library is feature-complete and we plan to **archive only feature development on January 31 2027**.  It remains available on PyPI, the repository stays open, and it's applications remain open for contribution. Please let us know in "Issues" if You have any thoughts.
+
 ![plot](https://drive.google.com/uc?id=1kzO8VZC38-ktIezrnFvH1b7K84zGBrsL)
 
 <div align="center">
